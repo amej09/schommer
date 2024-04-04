@@ -31,4 +31,13 @@ class ProduktRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         );
         return $query->execute();
     }
+    public function findAll($querystring = '') {
+        $query = $this->createQuery();
+        if ($querystring) {
+            $query->matching(
+                $query->like('titel', '%'.$querystring.'%')
+            );
+        }
+        return $query->execute();
+    }
 }

@@ -60,27 +60,29 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction(string $titel = null): \Psr\Http\Message\ResponseInterface
+    public function listAction()
     {
-        $produkts = $this->produktRepository->findAll();
+        /*$produkts = $this->produktRepository->findAll();
         
         if ($titel !== null && $titel !== '') {
             $produkts = $this->produktRepository->findByTitle($titel);
         }
         
-        $this->view->assign('produkts', $produkts);
+        $this->view->assign('produkts', $produkts);*/
+        $produkts = $this->produktRepository->findAll();
+
+        if ($this->request->hasArgument('titel')) {
+            $querystring = $this->request->getArgument('titel');
+            $produkts = $this->produktRepository->findAll($querystring);
+
+          }
+
+         $this->view->assign('produkts', $produkts);
 
         $kategories = $this->kategoryRepository->findAll();
         $this->view->assign('kategories', $kategories);
         
-        // Generate cHash only if $titel is not empty
-        $cHash = '';
-        if ($titel !== null && $titel !== '') {
-            $cHashCalculator = GeneralUtility::makeInstance(CacheHashCalculator::class);
-            $cHash = $cHashCalculator->generateForParameters(['title' => $titel]);
-        }
-        $this->view->assign('cHash', $cHash);
-        return $this->htmlResponse();
+       
 
     }
 
