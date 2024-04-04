@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:produkts/Resources/Private/Language/locallang_csh_tx_produkts_domain_model_kategory.xlf" date="2024-03-28T13:13:16Z" product-name="produkts">
+		<header/>
+		<body>
+			<trans-unit id="kategory_name.description" resname="kategory_name.description">
+				<source>kategoryName</source>
+			</trans-unit>
+			<trans-unit id="produkt.description" resname="produkt.description">
+				<source>produkt</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

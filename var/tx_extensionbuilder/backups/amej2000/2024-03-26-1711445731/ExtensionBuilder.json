@@ -1,0 +1,35 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "test produkt affichage",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 11.5.0-11.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "11.5.0-11.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "amej2000",
+        "name": "ExSchommer",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [],
+        "plugins": [],
+        "vendorName": "Abdeljalil"
+    },
+    "wires": [],
+    "storagePath": "C:\/xampp\/htdocs\/schommer\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2024-03-26 10:35",
+        "extension_builder_version": "11.0.9",
+        "be_user": " (1)"
+    }
+}

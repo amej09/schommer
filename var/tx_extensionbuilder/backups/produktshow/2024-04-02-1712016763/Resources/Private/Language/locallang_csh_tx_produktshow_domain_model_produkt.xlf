@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:produktshow/Resources/Private/Language/locallang_csh_tx_produktshow_domain_model_produkt.xlf" date="2024-04-02T02:05:53Z" product-name="produktshow">
+		<header/>
+		<body>
+			<trans-unit id="titel.description" resname="titel.description">
+				<source>titel</source>
+			</trans-unit>
+			<trans-unit id="preis.description" resname="preis.description">
+				<source>preis</source>
+			</trans-unit>
+			<trans-unit id="lager.description" resname="lager.description">
+				<source>lager</source>
+			</trans-unit>
+			<trans-unit id="lieferzeit.description" resname="lieferzeit.description">
+				<source>lieferzeit</source>
+			</trans-unit>
+			<trans-unit id="dateiname.description" resname="dateiname.description">
+				<source>dateiname</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

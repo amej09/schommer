@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:extension_message/Resources/Private/Language/locallang_db.xlf" date="2024-03-26T11:52:51Z" product-name="extension_message">
+		<header/>
+		<body>
+			<trans-unit id="tx_extension_message_helloworld.name" resname="tx_extension_message_helloworld.name">
+				<source>hallo word</source>
+			</trans-unit>
+			<trans-unit id="tx_extension_message_helloworld.description" resname="tx_extension_message_helloworld.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

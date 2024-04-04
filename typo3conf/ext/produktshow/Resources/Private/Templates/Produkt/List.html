@@ -1,0 +1,58 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+ 
+
+<f:layout name="Default" />
+
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Produkt:
+          List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+<f:section name="content" >
+    <div class="sidebar">
+        <f:render partial="FilterForm"   />
+        
+
+    </div>
+   
+
+    <div class="right-section">
+
+        <div class="product-cards">
+          <f:for each="{produkts}" as="produkt">
+              <a href="{f:uri.action(action: 'show', arguments: {produkt: produkt})}">
+                  <div class="product-card">
+                      <div class="product-info">
+                          <h1 class="product-title">{produkt.titel}</h1>
+                          <h2 class="donne-green product-price">{produkt.preis} €</h2>
+                      </div>
+
+                      <f:if condition="{produkt.lager} == 0">
+                          <f:then>
+                              <div class="out-of-stock zoom">
+                                  <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
+                              </div>
+                              <h2 class="out-of-stock-text">ausverkauft</h2>
+                          </f:then>
+                          <f:else>
+                              <div class="product-img zoom">
+                                  <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
+                              </div>
+                          </f:else>
+                      </f:if>
+                  </div>
+              </a>
+          </f:for>
+      </div>
+    </div>  
+
+</f:section>
+</html>

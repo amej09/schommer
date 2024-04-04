@@ -1,0 +1,34 @@
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/Configuration.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/Register.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/BodyTag.typoscript'
+
+[{$bootstrap.extconf.cookieconsent} == 1]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/JS/CookieConsent.typoscript'
+[END]
+
+[{$bootstrap.extconf.customScss} == 1 && {$bootstrap.cdn.enable} == 0]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeBootstrapScss.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeLocal.typoscript'
+[END]
+
+[{$bootstrap.extconf.customScss} == 1 && {$bootstrap.cdn.enable} == 1]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeBootstrapScss.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeCdn.typoscript'
+[END]
+
+[{$bootstrap.extconf.customScss} == 0 && {$bootstrap.cdn.enable} == 1]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeBootstrapCss.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeCdn.typoscript'
+[END]
+
+[{$bootstrap.extconf.customScss} == 0 && {$bootstrap.cdn.enable} == 0]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeBootstrapCss.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeLocal.typoscript'
+[END]
+
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/IncludeDefault.typoscript'
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/Template.typoscript'
+
+[{$bootstrap.print.enable} == 1]
+@import 'EXT:t3sbootstrap/Configuration/TypoScript/Page/Print.typoscript'
+[END]

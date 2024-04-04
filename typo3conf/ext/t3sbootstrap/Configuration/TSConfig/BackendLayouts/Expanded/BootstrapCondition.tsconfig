@@ -1,0 +1,65 @@
+# Set Condition in Modul 'Web' T3SB Config
+[colPosList('Content')]
+# Content only (no Jumbotron = 3 & no Footer = 4)
+mod.SHARED.colPos_list = 0,1,2
+[END]
+[colPosList('Jumbotron')]
+# Content & Jumbotron
+mod.SHARED.colPos_list = 3,0,1,2
+[END]
+[colPosList('Footer')]
+# Content & Footer
+mod.SHARED.colPos_list = 0,1,2,4
+[END]
+[colPosList('All')]
+# Content & Footer & Jumbotron
+mod.SHARED.colPos_list = 3,0,1,2,4
+[END]
+[colPosList('AllandTop')]
+# All & expanded Top
+mod.SHARED.colPos_list = 3,20,0,1,2,4
+[END]
+[colPosList('AllandBottom')]
+# All & expanded Bottom
+mod.SHARED.colPos_list = 3,0,1,2,4,21
+[END]
+[colPosList('JumbotronandTop')]
+# All & expanded Top
+mod.SHARED.colPos_list = 3,20,0,1,2
+[END]
+[colPosList('JumbotronandBottom')]
+# All & expanded Bottom
+mod.SHARED.colPos_list = 3,0,1,2,21
+[END]
+[colPosList('FooterandTop')]
+# All & expanded Top
+mod.SHARED.colPos_list = 20,0,1,2,4
+[END]
+[colPosList('FooterandBottom')]
+# All & expanded Bottom
+mod.SHARED.colPos_list = 0,1,2,4,21
+[END]
+[colPosList('ContentandTop')]
+# All & expanded Top
+mod.SHARED.colPos_list = 20,0,1,2
+[END]
+[colPosList('ContentandBottom')]
+# All & expanded Bottom
+mod.SHARED.colPos_list = 0,1,2,21
+[END]
+[colPosList('AllandTopBottom')]
+# All & expanded Top & Bottom
+mod.SHARED.colPos_list = 3,20,1,0,2,21,4
+[END]
+[colPosList('JumbotronandTopBottom')]
+# All & expanded Top & Bottom
+mod.SHARED.colPos_list = 3,20,0,1,2,21
+[END]
+[colPosList('FooterandTopBottom')]
+# All & expanded Top & Bottom
+mod.SHARED.colPos_list = 20,0,1,2,4,21
+[END]
+[colPosList('ContentandTopBottom')]
+# All & expanded Top & Bottom
+mod.SHARED.colPos_list = 20,0,1,2,21
+[END]

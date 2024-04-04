@@ -1,0 +1,52 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 11.5.0-11.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "11.5.0-11.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "firstextension",
+        "name": "Meine Extension",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "",
+                "email": "",
+                "name": "abdeljalil",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "HelloWorld => schow",
+                    "noncacheableActions": ""
+                },
+                "description": "",
+                "key": "helloworld",
+                "name": "Hello World"
+            }
+        ],
+        "vendorName": "Amejrar"
+    },
+    "wires": [],
+    "storagePath": "C:\/xampp\/htdocs\/schommer\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2024-03-21 04:17",
+        "extension_builder_version": "11.0.9",
+        "be_user": " (1)"
+    }
+}

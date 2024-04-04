@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:showproducts/Resources/Private/Language/locallang_db.xlf" date="2024-03-27T14:11:09Z" product-name="showproducts">
+		<header/>
+		<body>
+			<trans-unit id="tx_showproducts_allproduct.name" resname="tx_showproducts_allproduct.name">
+				<source>AllProduct</source>
+			</trans-unit>
+			<trans-unit id="tx_showproducts_allproduct.description" resname="tx_showproducts_allproduct.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

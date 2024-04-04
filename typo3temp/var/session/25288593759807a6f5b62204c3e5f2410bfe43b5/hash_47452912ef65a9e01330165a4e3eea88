@@ -1,0 +1,1 @@
+active|b:1;authorized|b:1;lastSessionId|i:1712271693;tstamp|i:1712271694;expires|i:1712272594;isBackendSession|b:1;backendUserSession|a:3:{s:5:"nonce";s:40:"65af25be1accd8885609c03702f9dccaf5464f82";s:6:"userId";i:1;s:4:"hmac";s:64:"b3ae538a071bdacbb68d8faa3638ca2c42db2736df933bbcaf4804356ffdb4d4";}

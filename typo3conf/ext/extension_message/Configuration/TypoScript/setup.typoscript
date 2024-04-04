@@ -1,0 +1,56 @@
+plugin.tx_extensionmessage_helloworld {
+    view {
+        templateRootPaths.0 = EXT:extension_message/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_extensionmessage_helloworld.view.templateRootPath}
+        partialRootPaths.0 = EXT:extension_message/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_extensionmessage_helloworld.view.partialRootPath}
+        layoutRootPaths.0 = EXT:extension_message/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_extensionmessage_helloworld.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_extensionmessage_helloworld.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+# these classes are only used in auto-generated templates
+plugin.tx_extensionmessage._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color: #FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    input.f3-form-error {
+        background-color: #FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    .tx-extension-message table {
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+
+    .tx-extension-message table th {
+        font-weight: bold;
+    }
+
+    .tx-extension-message table td {
+        vertical-align: top;
+    }
+
+    .typo3-messages .message-error {
+        color: red;
+    }
+
+    .typo3-messages .message-ok {
+        color: green;
+    }
+)

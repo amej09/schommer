@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:firstextension/Resources/Private/Language/locallang_db.xlf" date="2024-03-21T16:17:28Z" product-name="firstextension">
+		<header/>
+		<body>
+			<trans-unit id="tx_firstextension_helloworld.name" resname="tx_firstextension_helloworld.name">
+				<source>Hello World</source>
+			</trans-unit>
+			<trans-unit id="tx_firstextension_helloworld.description" resname="tx_firstextension_helloworld.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

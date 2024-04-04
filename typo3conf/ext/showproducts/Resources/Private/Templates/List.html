@@ -1,0 +1,12 @@
+<h1>Liste des produits</h1>
+<ul>
+    <f:for each="{products}" as="product">
+        <li>
+            <strong>{product.titel}</strong><br />
+            Prix: <f:if condition="{product.preis}">{product.preis}<f:else>Non spécifié</f:else></f:if><br />
+            Lagerbestand: <f:if condition="{product.lagerbestand}">{product.lagerbestand}<f:else>Non spécifié</f:else></f:if><br />
+            Lieferzeit: <f:if condition="{product.lieferzeit}">{product.lieferzeit}<f:else>Non spécifié</f:else></f:if><br />
+            Dateiname: <f:if condition="{product.dateiname}">{product.dateiname}<f:else>Non spécifié</f:else></f:if>
+        </li>
+    </f:for>
+</ul>

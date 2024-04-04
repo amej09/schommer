@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:produkts/Resources/Private/Language/locallang.xlf" date="2024-03-28T12:54:57Z" product-name="produkts">
+		<header/>
+		<body>
+			<trans-unit id="tx_produkts_domain_model_produkt" resname="tx_produkts_domain_model_produkt">
+				<source>Produkt</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produkt.titel" resname="tx_produkts_domain_model_produkt.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produkt.preis" resname="tx_produkts_domain_model_produkt.preis">
+				<source>Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produkt.lagerbestand" resname="tx_produkts_domain_model_produkt.lagerbestand">
+				<source>Lagerbestand</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produkt.lieferzeit" resname="tx_produkts_domain_model_produkt.lieferzeit">
+				<source>Lieferzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produkt.dateiname" resname="tx_produkts_domain_model_produkt.dateiname">
+				<source>Dateiname</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_kategory" resname="tx_produkts_domain_model_kategory">
+				<source>Kategory</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_kategory.kategory_name" resname="tx_produkts_domain_model_kategory.kategory_name">
+				<source>Kategory Name</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produktkategory" resname="tx_produkts_domain_model_produktkategory">
+				<source>Produkt Kategory</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produktkategory.produkt_i_d" resname="tx_produkts_domain_model_produktkategory.produkt_i_d">
+				<source>Produkt I D</source>
+			</trans-unit>
+			<trans-unit id="tx_produkts_domain_model_produktkategory.kategory_i_d" resname="tx_produkts_domain_model_produktkategory.kategory_i_d">
+				<source>Kategory I D</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,45 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "Affiche le message Hello World",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 11.5.0-11.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
+            "sourceLanguage": "en",
+            "state": "test",
+            "targetVersion": "11.5.0-11.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "extension_message",
+        "name": "ExtensionMessage",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "HelloWorld => show",
+                    "noncacheableActions": ""
+                },
+                "description": "",
+                "key": "helloworld",
+                "name": "hallo word"
+            }
+        ],
+        "vendorName": "Vendor"
+    },
+    "wires": [],
+    "storagePath": "C:\/xampp\/htdocs\/schommer\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2024-03-26 11:52",
+        "extension_builder_version": "11.0.9",
+        "be_user": " (1)"
+    }
+}

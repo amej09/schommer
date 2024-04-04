@@ -1,0 +1,343 @@
+#-------------------------------------------------------------------------------
+#	Plugin Constants
+#-------------------------------------------------------------------------------
+
+plugin.tx_t3sbootstrap {
+	view {
+		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:t3sbootstrap/Resources/Private/Templates/
+		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:t3sbootstrap/Resources/Private/Partials/
+		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:t3sbootstrap/Resources/Private/Layouts/
+	}
+}
+
+
+bootstrap.cdn.bootstraplatest = 5.2.0
+bootstrap.cdn.noZip = 0
+bootstrap.cdn.fontawesome5latest = 5.15.4
+bootstrap.cdn.fontawesome6latest = 6.1.2
+
+#-------------------------------------------------------------------------------
+#	Constant Editor
+#-------------------------------------------------------------------------------
+
+# customcategory=bootstrap-cdn=* T3SB::CDN- Google Fonts and Version-Settings
+# customsubcategory=a-enable=CDN (Content Delivery Network) - can offer a performance benefit!
+# customsubcategory=a-google=GoogleFonts - Integrate Google Fonts
+# customsubcategory=b-version=CDN Versions used in the scheduler task "T3SB CDN to local" - must be valid
+# customsubcategory=c-integrity=CDN Integrity - if set crossorigin is set to anonymous
+bootstrap.cdn {
+	# cat=bootstrap-cdn/a-enable/10; type=boolean; label=Enable CDN - please consider the "GDPR" ("DSGVO"):before CDN can be disabled, run the scheduler task "T3SB CDN to local" to write the required files to fileadmin/T3SB/Resources/Public/
+	enable = 1
+	# cat=bootstrap-cdn/a-enable/20; type=options[none=0, Cerulean=cerulean, Cosmo=cosmo, Cyborg=cyborg, Darkly=darkly, Flatly=flatly, Journal=journal, Litera=litera, Lumen=lumen, Lux=lux, Materia=materia, Minty=minty, Morph=morph Pulse=pulse, Quartz=quartz, Sandstone=sandstone, Simplex=simplex, Sketchy=sketchy, Slate=slate, Solar=solar, Spacelab=spacelab, Superhero=superhero, United=united, Vapor=vapor, Yeti=yeti, Zephyr=zephyr]; label=Bootswatch Themes CDN: Override default Bootstrap values with selected Bootswatch Theme - Info: https://bootswatch.com/.
+	bootswatch = 0
+	# cat=bootstrap-cdn/a-google/10; type=small; label=Comma separated list with google fonts:integrate Google Fonts "GDPR"-compliant locally into your website (e.g.: Montserrat,Fira Sans)
+	googlefonts =
+	# cat=bootstrap-cdn/b-version/10; type=small; label=Bootstrap:
+	bootstrap = 5.2.0
+	# cat=bootstrap-cdn/b-version/11; type=small; label=Popper js:
+	popperjs = 2.11.5
+	# cat=bootstrap-cdn/b-version/13; type=small; label=Masonry js:
+	masonry = 4.2.2
+	# cat=bootstrap-cdn/b-version/12; type=small; label=Fontawesome: e.g. 5.15.4 or 6.1.2
+	fontawesome = 5.15.4
+	# cat=bootstrap-cdn/b-version/20; type=small; label=jQuery library:
+	jquery = 3.6.0
+	# cat=bootstrap-cdn/b-version/22; type=small; label=jQuery Easing:
+	jqueryEasing = 1.4.1
+	# cat=bootstrap-cdn/b-version/25; type=int+; label=Cookieconsent: set to 3 only to get v3.x (latest)
+	cookieconsent = 3
+	# cat=bootstrap-cdn/b-version/27; type=small; label=Highlight: used with codesnippet
+	highlight = 11.6.0
+	# cat=bootstrap-cdn/b-version/30; type=small; label=Lazyload:
+	lazyload = 17.8
+	# cat=bootstrap-cdn/b-version/32; type=small; label=Picturefill:
+	picturefill = 3.0.3
+	# cat=bootstrap-cdn/b-version/37; type=small; label=Animate CSS:
+	animate = 4.1.1
+	# cat=bootstrap-cdn/b-version/40; type=small; label=Baguette Box:
+	baguetteBox = 1.11.1
+	# cat=bootstrap-cdn/b-version/42; type=small; label=Halkabox:
+	halkabox = 1.6.0
+	# cat=bootstrap-cdn/b-version/45; type=small; label=G Lightbox:
+	glightbox = 3.2.0
+	# cat=bootstrap-cdn/b-version/50; type=small; label=Jarallax:
+	jarallax = 2
+	# cat=bootstrap-cdn/b-version/60; type=small; label=Swiper:
+	swiper = 8
+
+	# cat=bootstrap-cdn/c-integrity/10; type=small; label=Bootstrap CSS:
+	bootstrapCssIntegrity = sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx
+	# cat=bootstrap-cdn/c-integrity/11; type=small; label=Bootstrap JS:
+	bootstrapJsIntegrity = sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK
+	# cat=bootstrap-cdn/c-integrity/12; type=small; label=Bootstrap Bundle JS:
+	bootstrapBundleJsIntegrity = sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa
+	# cat=bootstrap-cdn/c-integrity/13; type=small; label=Popper js:
+	popperjsIntegrity = sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk
+	# cat=bootstrap-cdn/c-integrity/14; type=small; label=Masonry js:
+	masonryIntegrity = sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D
+	# cat=bootstrap-cdn/c-integrity/20; type=small; label=jQuery library:
+	jqueryIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/22; type=small; label=jQuery Easing:
+	jqueryEasingIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/25; type=small; label=Cookieconsent:
+	cookieconsentIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/27; type=small; label=Highlight:
+	highlightIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/30; type=small; label=Lazyload:
+	lazyloadIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/32; type=small; label=Picturefill:
+	picturefillIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/37; type=small; label=Baguette Box:
+	baguetteBoxIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/40; type=small; label=Halkabox:
+	halkaboxIntegrity = 
+	# cat=bootstrap-cdn/c-integrity/42; type=small; label=G Lightbox:
+	glightboxIntegrity = 
+}
+
+# customcategory=bootstrap-image=* T3SB::Image settings
+# customsubcategory=a-image=Default Image Size
+# customsubcategory=b-image=Additional image sizes (srcset) that should be generated for each content image.
+# customsubcategory=c-image=Lazyloading Threshold
+# customsubcategory=d-image=Picturefill
+bootstrap.image {
+	# cat=bootstrap-image/a-image/30; type=boolean; label=Min. width: if enabled the minimum "equalMediaWidth" is set to 575px and therefore 100% wide on mobile.
+	minimumWidth = 0
+	# cat=bootstrap-image/a-image/40; type=boolean; label=Ratio: if enabled use width and height for ratio in textmedia, textpic, image, card and media object.
+	ratioWithHeight = 0
+	# cat=bootstrap-image/a-image/50; type=small; label=Max. image width Media object: the default max. width for the media object.
+	maxWidthMediaObject = 200
+	# cat=bootstrap-image/a-image/60; type=small; label=Max. image width Toast: the default max. width for Bootstrap toast.
+	maxWidthToast = 20
+	# cat=bootstrap-image/a-image/70; type=boolean; label=Disable auto row: the default "Gallery row width in % = auto" is set to "none" if activated.
+	disableAutoRow = 0
+	# cat=bootstrap-image/b-image/10; type=small; label=Additional Image Sizes for Desktop min-width 1200px: comma-separated list of either image widths specified in pixels.
+	srcsetDesktop = 125, 255, 385, 576, 768, 992, 1200, 1440, 1920, 2650
+	# cat=bootstrap-image/b-image/20; type=small; label=Additional Image Sizes for Tablet min-width 576px: comma-separated list of either image widths specified in pixels.
+	srcsetTablet = 125, 255, 385, 576, 768, 992, 1200
+	# cat=bootstrap-image/b-image/30; type=small; label=Additional Image Sizes for Mobile max-width 575px: comma-separated list of either image widths specified in pixels.
+	srcsetMobile = 60, 100, 200, 385, 575
+	# cat=bootstrap-image/b-image/35; type=small; label=Additional Image Sizes for Background-Image: comma-separated list of either image widths specified in pixels.
+	bgMediaQueries = 2560, 1920, 1200, 992, 768, 576
+	# cat=bootstrap-image/c-image/010; type=int+; label=Threshold for Lazy load: if "lazyLoad" is activated in the EM config, the distance out of the viewport, expressed in pixel, before which to start loading the images.
+	lazyLoadThreshold = 0
+	# cat=bootstrap-image/c-image/020; type=boolean; label=Lazy load for images in the BG-Wrapper: not the BG-image
+	lazyLoadBgWrapperImage = 0
+	# cat=bootstrap-image/d-image/40; type=boolean; label=A responsive image polyfill: Picturefill enables support for the picture element and associated features in browsers that do not yet support them.
+	picturefill = 0
+}
+
+
+# customcategory=bootstrap-optimize=* T3SB::OPTIMIZE-Bootstrap 
+# customsubcategory=c-enable=Optimize Bootstrap - Lean Sass imports When using "Custom SCSS", make sure you optimize Bootstrap by only @importing the components you need. For example, if you’re not using the carousel, remove that import to save some file size in your compiled CSS by disable the associated checkbox below. progress, tooltip, popover and placeholders are not used by t3sbootstrap! After that execute the scheduler task "t3sbootstrap:customScss".
+bootstrap.optimize {
+	# cat=bootstrap-optimize/c-enable/10; type=boolean; label=tables
+	tables = 1
+	# cat=bootstrap-optimize/c-enable/11; type=boolean; label=forms
+	forms = 1
+	# cat=bootstrap-optimize/c-enable/12; type=boolean; label=buttons
+	buttons = 1
+	# cat=bootstrap-optimize/c-enable/13; type=boolean; label=transitions
+	transitions = 1
+	# cat=bootstrap-optimize/c-enable/14; type=boolean; label=dropdown
+	dropdown = 1
+	# cat=bootstrap-optimize/c-enable/15; type=boolean; label=button-group
+	button-group = 1
+	# cat=bootstrap-optimize/c-enable/16; type=boolean; label=nav
+	nav = 1
+	# cat=bootstrap-optimize/c-enable/17; type=boolean; label=navbar
+	navbar = 1
+	# cat=bootstrap-optimize/c-enable/18; type=boolean; label=card
+	card = 1
+	# cat=bootstrap-optimize/c-enable/19; type=boolean; label=accordion
+	accordion = 1
+	# cat=bootstrap-optimize/c-enable/20; type=boolean; label=breadcrumb
+	breadcrumb = 1
+	# cat=bootstrap-optimize/c-enable/21; type=boolean; label=pagination
+	pagination = 1
+	# cat=bootstrap-optimize/c-enable/22; type=boolean; label=badge
+	badge = 1
+	# cat=bootstrap-optimize/c-enable/23; type=boolean; label=alert
+	alert = 1
+	# cat=bootstrap-optimize/c-enable/24; type=boolean; label=progress
+	progress = 1
+	# cat=bootstrap-optimize/c-enable/25; type=boolean; label=list-group
+	list-group = 1
+	# cat=bootstrap-optimize/c-enable/26; type=boolean; label=close
+	close = 1
+	# cat=bootstrap-optimize/c-enable/27; type=boolean; label=toasts
+	toasts = 1
+	# cat=bootstrap-optimize/c-enable/28; type=boolean; label=modal
+	modal = 1
+	# cat=bootstrap-optimize/c-enable/29; type=boolean; label=tooltip
+	tooltip = 1
+	# cat=bootstrap-optimize/c-enable/30; type=boolean; label=popover
+	popover = 1
+	# cat=bootstrap-optimize/c-enable/31; type=boolean; label=carousel
+	carousel = 1
+	# cat=bootstrap-optimize/c-enable/32; type=boolean; label=spinners
+	spinners = 1
+	# cat=bootstrap-optimize/c-enable/33; type=boolean; label=offcanvas
+	offcanvas = 1
+	# cat=bootstrap-optimize/c-enable/34; type=boolean; label=placeholders
+	placeholders = 1
+}
+
+
+# customcategory=bootstrap-pages=* T3SB::Global pages override
+# customsubcategory=a-pages=Global pages override
+bootstrap.pages.override {
+	# cat=bootstrap-pages/a-pages/05; type=options[none=0, container, container-sm, container-md, container-lg, container-xl, container-xxl, container-fluid]; label=Container (for the whole page):
+	container = 0
+	# cat=bootstrap-pages/a-pages/10; type=boolean; label=Link to top:
+	linkToTop = 0
+	# cat=bootstrap-pages/a-pages/15; type=options[0, 1, 2, 3, 4, 5, 6]; label=Aside columns width:
+	smallColumns = 0
+	# cat=bootstrap-pages/a-pages/20; type=boolean; label=Dropdown menu right:
+	dropdownRight = 0
+	# cat=bootstrap-pages/a-pages/25; type=options[0, default, top, bottom, leftTop, leftBottom, rightTop, rightBottom]; label=Aside order on mobile:
+	mobileOrder = 0
+	# cat=bootstrap-pages/a-pages/30; type=options[0, md, sm, md, lg, xl, xxl]; label=Breakpoint:
+	breakpoint = 0
+	# cat=bootstrap-pages/a-pages/50; type=small; label=Title color: Hex color codes, RGB or CSS variables e.g. var(--bs-primary)
+	titlecolor =
+	# cat=bootstrap-pages/a-pages/55; type=small; label=Subtitle color: Hex color codes, RGB or CSS variables e.g. var(--bs-primary)
+	subtitlecolor =
+}
+
+
+#-------------------------------------------------------------------------------
+#	NOT in Constant Editor
+#-------------------------------------------------------------------------------
+# Pagebrowser - MORE INFO: https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Hmenu/Index.html#special-browse
+bootstrap.pagebrowser.enable = 0
+bootstrap.pagebrowser.prevnextToSection = 1
+# options: index|up|nextsection|next|prev|prevsection
+# used in: page.10.dataProcessing.12 -> Page/Template.typoscript
+bootstrap.pagebrowser.prevItem = prev|prevsection
+bootstrap.pagebrowser.nextItem = nextsection|next
+bootstrap.pagebrowser.entryLevel = 1
+
+# enable the currently available utility colors in the BE Modul
+bootstrap.config.enableUtilityColors = 1
+# hints to increase the website speed in the BE Modul
+bootstrap.config.enableInfo = 1
+# enable the Dark Mode - if "prefers-color-scheme" (iOS and Android) is "dark" -> the body tag gets the class "dark-mode" 
+bootstrap.config.darkMode = 0
+
+# include print template
+bootstrap.print.enable = 0
+
+# Custom path to your custom.scss files: e.g.: fileadmin/T3SB/Resources/Public/SCSS/ (clear cache and run the Scheduler).
+bootstrap.customScssPath = fileadmin/T3SB/Resources/Public/SCSS/
+
+# disable default CSS - t3sbootstrap.css
+bootstrap.config.disableDefaultCss = 0
+
+# back to top button
+bootstrap.backToTopTitle = to top
+bootstrap.backToTopClass = fa fa-chevron-circle-up fa-4x
+bootstrap.backToTopForAllPages = 0
+
+# Preload the google fonts includedby bootstrap.cdn.googlefonts if activated (execute scheduler task t3sbootstrap:cdnToLocal)
+bootstrap.preloadGooleFonts = 0
+# GTM Account ID - include the Google Tag Manager if entered
+bootstrap.gtm =
+
+# disable jQuery by default
+bootstrap.disable.jquery = 1
+# load jquery into the header if activated 
+bootstrap.config.jqueryHeader = 0
+
+# disable scroll to top for accordions
+bootstrap.disable.accordion.scrollToTop = 0
+
+bootstrap.navbar {
+	image.defaultPath = /typo3conf/ext/t3sbootstrap/Resources/Public/Images/bootstrap-logo-white.svg
+	image.width = 30
+	image.height = 24
+	image.altText = Company Logo
+	# (int+) default breakpoints - same like Bootstrap (used as condition for inlineJS e.g. navbar hover)
+	breakpoint {
+		sm = 576
+		md = 768
+		lg = 992
+		xl = 1200
+		xxl = 1400
+	}
+	# (int+) subdropdown with two columns if items greater or equal
+	subdropdown.twoColumns = 30
+	# (boolean) page uid with search plugin - link to your search plugin
+	searchboxLink = 0
+	# (boolean) fe user name in navbar - if logged in
+	feUserName = 0
+	# Dropdown icon float right
+	floatDropdownIconRight = 0
+}
+
+# style one for the submenu (0 = default)
+bootstrap.submenu.styleOne = 0
+
+# enable in EM config (info: https://github.com/insites/cookieconsent)
+bootstrap.cookieconsent {
+	# info, opt-in or opt-out
+	type = info
+	popup.background = #000
+	popup.text = #fff
+	button.background = #f1d600
+	button.text = #000
+	# block (default), edgeless, classic
+	theme = edgeless
+	# top, bottom, top-left, top-right, bottom-left, bottom-right
+	position = top
+	message = Diese Website setzt Cookies und verwendet Google Analytics. Durch die Nutzung unserer Website erklären Sie sich damit einverstanden.
+	dismiss = Info ausblenden
+	allow = zulassen
+	link = Mehr erfahren
+	deny = Cookies ablehnen
+	href = /datenschutzerklaerung/
+	revokeBtn = <div class='cc-revoke {{classes}}'>Cookie Optionen</div>
+	regionalLaw = false
+	location = true
+}
+
+styles.content.allowTags:= addToList( s, mark)
+
+# in px (preset)
+styles.content.textmedia.maxW = 1320
+styles.content.textmedia.linkWrap.width = 1320m
+styles.content.textmedia.linkWrap.height = 800m
+
+#disable some not used constants
+styles.content.textmedia.maxWInText =
+styles.content.textmedia.columnSpacing =
+styles.content.textmedia.rowSpacing =
+styles.content.textmedia.textMargin =
+styles.content.textmedia.borderColor =
+styles.content.textmedia.borderWidth =
+styles.content.textmedia.borderPadding =
+
+# pages override
+pages.override {
+	# 1,2,3,4 or 6 (only)
+	smallColumns =
+	# sm,md,lg or xl (only)
+	breakpoint =
+	# boolean	
+	dropdownRight = 
+}
+
+# Prevents a LOG ERROR "TYPO3.CMS.Frontend.Configuration.TypoScript.ConditionMatching.ConditionMatcher": Expression could not be parsed
+bootstrap.config.uid = 1
+bootstrap.config.lightboxSelection = 0
+bootstrap.config.faLinkIcons = 0
+bootstrap.config.backgroundImageEnable = 0
+bootstrap.config.footerSticky = 0
+bootstrap.config.compress = 
+bootstrap.config.navbarBreakpoint = 
+
+// import outsourced constants from DB
+@import 'fileadmin/T3SB/Configuration/TypoScript/t3sbconstants.typoscript'

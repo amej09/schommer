@@ -1,0 +1,14 @@
+plugin.tx_extensionmessage_helloworld {
+    view {
+        # cat=plugin.tx_extensionmessage_helloworld/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:extension_message/Resources/Private/Templates/
+        # cat=plugin.tx_extensionmessage_helloworld/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:extension_message/Resources/Private/Partials/
+        # cat=plugin.tx_extensionmessage_helloworld/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:extension_message/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_extensionmessage_helloworld//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}
