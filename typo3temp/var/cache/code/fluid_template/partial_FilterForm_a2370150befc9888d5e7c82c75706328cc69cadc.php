@@ -1,6 +1,6 @@
 <?php
 
-class partial_FilterForm_dada0c702d140a6c306ce081f81f1ae411719320 extends \TYPO3Fluid\Fluid\Core\Compiler\AbstractCompiledTemplate {
+class partial_FilterForm_a2370150befc9888d5e7c82c75706328cc69cadc extends \TYPO3Fluid\Fluid\Core\Compiler\AbstractCompiledTemplate {
 
 public function getLayoutName(\TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext) {
 $self = $this;
@@ -474,10 +474,40 @@ $arguments36['accesskey'] = NULL;
 $arguments36['tabindex'] = NULL;
 $arguments36['onclick'] = NULL;
 $arguments36['action'] = 'list';
-$arguments36['method'] = 'POST';
+$arguments36['method'] = 'post';
 $arguments36['class'] = 'filter-form';
 
 $output0 .= TYPO3\CMS\Fluid\ViewHelpers\FormViewHelper::renderStatic($arguments36, $renderChildrenClosure37, $renderingContext);
+
+$output0 .= '
+    ';
+// Rendering ViewHelper TYPO3\CMS\Fluid\ViewHelpers\Link\ExternalViewHelper
+$renderChildrenClosure45 = function() use ($renderingContext, $self) {
+return 'Rafraîchir la liste';
+};
+$arguments44 = array();
+$arguments44['additionalAttributes'] = NULL;
+$arguments44['data'] = NULL;
+$arguments44['aria'] = NULL;
+$arguments44['uri'] = NULL;
+$arguments44['defaultScheme'] = 'https';
+$arguments44['class'] = NULL;
+$arguments44['dir'] = NULL;
+$arguments44['id'] = NULL;
+$arguments44['lang'] = NULL;
+$arguments44['style'] = NULL;
+$arguments44['title'] = NULL;
+$arguments44['accesskey'] = NULL;
+$arguments44['tabindex'] = NULL;
+$arguments44['onclick'] = NULL;
+$arguments44['name'] = NULL;
+$arguments44['rel'] = NULL;
+$arguments44['rev'] = NULL;
+$arguments44['target'] = NULL;
+$array46 = array (
+);$arguments44['uri'] = $renderingContext->getVariableProvider()->getByPath('newUrl', $array46);
+
+$output0 .= TYPO3\CMS\Fluid\ViewHelpers\Link\ExternalViewHelper::renderStatic($arguments44, $renderChildrenClosure45, $renderingContext);
 
 $output0 .= '
 

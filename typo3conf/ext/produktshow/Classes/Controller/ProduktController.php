@@ -62,27 +62,21 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        /*$produkts = $this->produktRepository->findAll();
-        
-        if ($titel !== null && $titel !== '') {
-            $produkts = $this->produktRepository->findByTitle($titel);
-        }
-        
-        $this->view->assign('produkts', $produkts);*/
-        $produkts = $this->produktRepository->findAll();
-
+        $produkts = [];
         if ($this->request->hasArgument('titel')) {
             $querystring = $this->request->getArgument('titel');
-            $produkts = $this->produktRepository->findAll($querystring);
+            $produkts = $this->produktRepository->findByTitel($querystring);
+        }else{
+            $produkts = $this->produktRepository->findAll();
 
-          }
+        }
 
-         $this->view->assign('produkts', $produkts);
+        $this->view->assign('produkts', $produkts);
 
         $kategories = $this->kategoryRepository->findAll();
         $this->view->assign('kategories', $kategories);
         
-       
+         
 
     }
 

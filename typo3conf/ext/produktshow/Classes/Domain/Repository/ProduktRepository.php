@@ -23,19 +23,12 @@ class ProduktRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $titel
      * @return QueryResultInterface|array
      */
-    public function findByTitle($titel)
-    {
+     
+    public function findByTitel($titel = '') {
         $query = $this->createQuery();
-        $query->matching(
-            $query->like('titel', '%' . $titel . '%')
-        );
-        return $query->execute();
-    }
-    public function findAll($querystring = '') {
-        $query = $this->createQuery();
-        if ($querystring) {
+        if ($titel) {
             $query->matching(
-                $query->like('titel', '%'.$querystring.'%')
+                $query->like('titel', '%'.$titel.'%')
             );
         }
         return $query->execute();
