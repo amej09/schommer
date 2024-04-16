@@ -6,6 +6,7 @@ $typo3InstallDir = \TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/';
 
 return array(
     'B13\\Container\\' => array($typo3InstallDir . 'typo3conf/ext/container/Classes'),
+    'Brosua\\FormSearch\\' => array($typo3InstallDir . 'typo3conf/ext/form_search/Classes'),
     'EBT\\ExtensionBuilder\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder/Classes'),
     'IchHabRecht\\ContentDefender\\' => array($typo3InstallDir . 'typo3conf/ext/content_defender/Classes'),
     'T3SBS\\T3sbootstrap\\' => array($typo3InstallDir . 'typo3conf/ext/t3sbootstrap/Classes'),

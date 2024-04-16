@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Vendor\Produktshow\Controller;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Page\CacheHashCalculator;
 
@@ -54,33 +56,38 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $this->kategoryRepository = $kategoryRepository;
     }
-
-     /**
-     * action list
-     *
+    
+    /**
+     * Action list
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function listAction()
     {
-        $produkts = [];
-        if ($this->request->hasArgument('titel')) {
-            $querystring = $this->request->getArgument('titel');
-            $produkts = $this->produktRepository->findByTitel($querystring);
+        $produkts = $this->produktRepository->findAll();
+        $searchTerm = $this->request->getParsedBody()['searchTerm'];
+        $selectedCategories = $this->request->getParsedBody()['kategory'];
+        $priceRange = $this->request->getParsedBody()['priceRange'] ;
+        if( $searchTerm==null){
+            $searchTerm="";
+        }
+       
+
+        if (!empty($selectedCategories)) {
+            $produkts = $this->produktRepository->findByCategories($searchTerm,$selectedCategories,$priceRange);
         }else{
-            $produkts = $this->produktRepository->findAll();
+            $produkts = $this->produktRepository->findByFilter($searchTerm,$priceRange);
 
         }
-
+ 
+    
+        $this->view->assign('searchTerm', $searchTerm);
         $this->view->assign('produkts', $produkts);
-
         $kategories = $this->kategoryRepository->findAll();
         $this->view->assign('kategories', $kategories);
-        
-         
 
+        return $this->htmlResponse();
     }
-
-
+    
     /**
      * action show
      *

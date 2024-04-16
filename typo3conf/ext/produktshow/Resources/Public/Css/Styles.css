@@ -4,10 +4,10 @@
 }
 @font-face {
     font-family: MontserratRegular;
-    src: url('/Css/fonts/Montserrat/Montserrat-Regular.ttf');
+    src: url('/fonts/Montserrat/Montserrat-Regular.ttf');
 }
     
-* {
+.tx-produktshow {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -113,7 +113,7 @@ input[type="checkbox"] {
 }
 /* Benutzerdefinierter Symbolstil, wenn das Kontrollkästchen aktiviert ist */
 input[type="checkbox"]:checked + label .icon {
-    content: url("/schommer/fileadmin/user_upload//button_aktiv.svg"); /* link zum aktiven Symbol */
+    content: url("/schommer/fileadmin/user_upload/button_aktiv.svg"); /* link zum aktiven Symbol */
 }
 
 
@@ -276,8 +276,78 @@ a{
     transform: rotate(180deg);
     transition: transform 0.3s ease;
   }
-/**/
+/*detaille*/
+.titel-product{
+    display:inline;
+}
+.titel-top{
+    display:none;
+}
+.titel{
 
+    margin-bottom: 35px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height :24px;
+    color: #505050;
+    font-family: 'MontserratBold';
+
+}
+.rotate90 {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;  
+    width: 22px;
+    height: auto;
+}
+.container-d {
+    max-width: 1000px;
+    display:flex;   
+}
+.image{
+    padding-right: 10px;
+
+}
+.product-detaille img{
+    max-width: 100%;
+    height: auto;
+    width: 500px;
+    height: 500px;
+    transition: transform .2s ease; /* Animation */
+}
+.product-info{
+    max-width: 500px;
+    height: auto;
+ }
+ .button-kaufen{
+    background-color: transparent;
+    border: 1px solid #AFD96F;
+    border-radius: 50px;
+    padding: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 25px;
+
+}
+.button-kaufen-disabled{
+    background-color: transparent;
+    border-color: gray;
+    color: gray;  
+    border-radius: 50px;
+    padding: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 25px;
+
+}
+.zuruck{
+    padding: 10px;
+}
 
 @media screen and (max-width: 800px) {
     body {
@@ -304,5 +374,31 @@ a{
     }
     .notfound{
         font-size: 40px;}
+    /*detaille*/
+    .container-d{
+        display: block;
+
+    }
+    .image{
+        width: 100%;
+        height:auto;
+    }
+    
+    .product-detaille img{
+        max-width: 100%;
+        height: auto;
+    }    
+    .product-info{
+        width: 100%;
+   }
+   .button-kaufen{
+    width: 100%;
+    }
+    .titel-top{
+        display:inline;
+    }
+    .titel-product{
+        display:none;
+    }
 }
 

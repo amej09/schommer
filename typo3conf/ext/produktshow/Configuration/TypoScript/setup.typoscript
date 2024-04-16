@@ -22,6 +22,19 @@ plugin.tx_produktshow_prs {
     includeCSS{
         100 = EXT:produktshow/Resources/Public/Css/Styles.css
     }
+    
+}
+
+
+# Définir une configuration spécifique pour la génération du cHash dans le formulaire
+config.tx_extbase {
+    objects {
+        TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder {
+            argumentsToBeExcludedFromQueryString {
+                0 = cHash
+            }
+        }
+    }
 }
 
 # these classes are only used in auto-generated templates

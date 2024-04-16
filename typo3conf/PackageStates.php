@@ -107,6 +107,9 @@ return [
         'extension_message' => [
             'packagePath' => 'typo3conf/ext/extension_message/',
         ],
+        'form_search' => [
+            'packagePath' => 'typo3conf/ext/form_search/',
+        ],
         'produktshow' => [
             'packagePath' => 'typo3conf/ext/produktshow/',
         ],

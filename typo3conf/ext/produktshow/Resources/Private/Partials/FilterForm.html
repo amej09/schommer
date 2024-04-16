@@ -1,51 +1,30 @@
-    <!--<form action="">
-        <input type="text" name="" id="">
-        <input type="submit" value="Search" />
-
-        <f:debug inline="1">{kategories}</f:debug>
-        <f:for each="{kategories}" as="kat" iteration="i">
-            <label for="{kat.uid}">
-                <input type="checkbox" name="" id="{kat.uid}" value="{kat.uid}">
-                {kat.name}
-            </label>
+<f:form  action="list" controller="Produkt" method="post" >
+    <div class="icon-input">
+        <f:form.textfield class="search" name="titel" value="{titel}" placeholder="Suche.." />
+        <button type="submit" class="img-btn"><img src="/schommer/fileadmin/user_upload/lupe.svg" /></button>
+    </div>
+    <div class="categories">
+        <h2 class="donne-green">Kategorien</h2>
+        <f:for each="{kategories}" as="kategory">
+            <div class="checkbox-custom">
+                <f:form.checkbox id="myCheckbox{kategory.uid}" name="Kategory[]" value="{kategory.uid}" checked="{kategory.uid in _GET.kategory}" />
+                <label class="donne" for="myCheckbox{kategory.uid}">
+                    <img src="/schommer/fileadmin/user_upload/button_inaktiv.svg" alt="Icône par défaut" class="icon" />
+                    <span class="category-name">{kategory.namekategory}</span>
+                </label>
+            </div>
         </f:for>
-    </form>
-    <f:form action="yourAction" method="GET" name="Filter" id="form">
-            <div class="icon-input">
-                <f:form.textfield class="search" name="search" value="{search}" placeholder="Suche.." />
-                <button type="submit" class="img-btn"><img src="/schommer/fileadmin/user_upload/lupe.svg" /></button>
-            </div>
-            <div class="categories">
-                <h2 class="donne-green">Kategorien</h2>
-                <f:for each="{kategories}" as="kategory">
-                    <div class="checkbox-custom">
-                        <f:form.checkbox id="myCheckbox{kategory.uid}" name="Kategory[]" value="{kategory.uid}" checked="{kategory.uid in Kategory}" />
-                        <label class="donne" for="myCheckbox{kategory.uid}">
-                            <img src="/schommer/fileadmin/user_upload/button_inaktiv.svg" alt="Icône par défaut" class="icon" />
-                            <span class="category-name">{kategory.namekategory}</span>
-                        </label>
-                    </div>
-                </f:for>
-            </div>
-            <div class="dropdown Preis">
-                <h2 class="donne-green">Preis</h2>
-                <button class="dropbtn">Preisspanne wählen<span><img src="/schommer/fileadmin/user_upload/pfeil.png" /></span></button>
-                <div class="dropdown-content donne">
-                    <f:form.hidden name="price-filter" value="{price_filter}" />
-                    <a href="#" onclick="price_filter(1)">0 $ - 50 $</a>
-                    <a href="#" onclick="price_filter(2)">50 $ - 100 $</a>
-                    <a href="#" onclick="price_filter(3)">100 $ - 200 $</a>
-                    <a href="#" onclick="price_filter(4)">200 $ und mehr</a>
-                </div>
-            </div>
-    </f:form>-->
-
-  <!-- FilterForm.html -->
-   
-    <f:form action="list" method="post" class="filter-form">
-
-        <f:form.textfield name="titel" value="{titel}" placeholder="Rechercher par titre" />
-        <f:form.submit value="Filtrer" />
-
-    </f:form>
-
+    </div>
+    
+    <div class="dropdown Preis">
+        <h2 class="donne-green">Preis</h2>
+        <button class="dropbtn">Preisspanne wählen<span><img src="/schommer/fileadmin/user_upload/pfeil.png" /></span></button>
+        <div class="dropdown-content donne">
+            <f:form.hidden name="price-filter" value="{price_filter}" />
+            <a href="#" onclick="price_filter(1)">0 $ - 50 $</a>
+            <a href="#" onclick="price_filter(2)">50 $ - 100 $</a>
+            <a href="#" onclick="price_filter(3)">100 $ - 200 $</a>
+            <a href="#" onclick="price_filter(4)">200 $ und mehr</a>
+        </div>
+    </div>
+</f:form>

@@ -9,6 +9,7 @@ return [
             'options' => [],
         ],
     ],
+    
     'DB' => [
         'Connections' => [
             'Default' => [

@@ -70,6 +70,7 @@ return array(
     'B13\\Container\\ViewHelpers\\DrawChildrenViewHelper' => $typo3InstallDir . 'typo3conf/ext/container/Classes/ViewHelpers/DrawChildrenViewHelper.php',
     'B13\\Container\\View\\ContainerLayoutView' => $typo3InstallDir . 'typo3conf/ext/container/Classes/View/ContainerLayoutView.php',
     'B13\\Container\\Xclasses\\LocalizationController' => $typo3InstallDir . 'typo3conf/ext/container/Classes/Xclasses/LocalizationController.php',
+    'Brosua\\FormSearch\\Xclass\\FormManagerController' => $typo3InstallDir . 'typo3conf/ext/form_search/Classes/Xclass/FormManagerController.php',
     'EBT\\ExtensionBuilder\\Configuration\\ExtensionBuilderConfigurationManager' => $typo3InstallDir . 'typo3conf/ext/extension_builder/Classes/Configuration/ExtensionBuilderConfigurationManager.php',
     'EBT\\ExtensionBuilder\\Controller\\BuilderModuleController' => $typo3InstallDir . 'typo3conf/ext/extension_builder/Classes/Controller/BuilderModuleController.php',
     'EBT\\ExtensionBuilder\\Domain\\Exception\\ExtensionException' => $typo3InstallDir . 'typo3conf/ext/extension_builder/Classes/Domain/Exception/ExtensionException.php',
