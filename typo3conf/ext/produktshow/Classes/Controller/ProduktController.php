@@ -3,12 +3,7 @@
 declare(strict_types=1);
 
 namespace Vendor\Produktshow\Controller;
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Page\CacheHashCalculator;
-
+ 
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
  *
@@ -64,14 +59,16 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function listAction()
     {
         $produkts = $this->produktRepository->findAll();
-        $searchTerm = $this->request->getParsedBody()['searchTerm'];
-        $selectedCategories = $this->request->getParsedBody()['kategory'];
-        $priceRange = $this->request->getParsedBody()['priceRange'] ;
-        if( $searchTerm==null){
-            $searchTerm="";
-        }
        
 
+        $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? null;
+        $selectedCategories = $this->request->getParsedBody()['kategory'] ?? [];
+        $priceRange = $this->request->getParsedBody()['priceRange'] ?? null;
+    
+         $priceRange = $priceRange ?? '0'; 
+    
+         $searchTerm = $searchTerm ?? '';
+    
         if (!empty($selectedCategories)) {
             $produkts = $this->produktRepository->findByCategories($searchTerm,$selectedCategories,$priceRange);
         }else{
@@ -79,7 +76,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         }
  
-    
+        $this->view->assign('selectedCategories', $selectedCategories);
         $this->view->assign('searchTerm', $searchTerm);
         $this->view->assign('produkts', $produkts);
         $kategories = $this->kategoryRepository->findAll();

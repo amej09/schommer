@@ -22,11 +22,11 @@ class ProduktRepository extends Repository
 {
  
     /**
-     * @param string $searchTerm
+     * @param string $titel
      * @param string $priceRange
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
-    public function findByFilter(string $searchTerm ,string $priceRange )
+    public function findByFilter(string $titel ,string $priceRange )
     {
         $minPrice = 0;
         $maxPrice = 10000000000;  
@@ -44,7 +44,7 @@ class ProduktRepository extends Repository
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
-                $query->like('titel', '%' . $searchTerm . '%'),
+                $query->like('titel', '%' . $titel . '%'),
                 $query->greaterThanOrEqual('preis', $minPrice),
                 $query->lessThanOrEqual('preis', $maxPrice)
             )
@@ -59,7 +59,7 @@ class ProduktRepository extends Repository
      * @param array $categoryIds
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
-    public function findByCategories(string $searchTerm,array $categoryIds ,string $priceRange )
+    public function findByCategories(string $titel,array $categoryIds ,string $priceRange )
     {
         $minPrice = 0;
         $maxPrice = 10000000000;  
@@ -77,7 +77,7 @@ class ProduktRepository extends Repository
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
-                $query->like('titel', '%' . $searchTerm . '%'),
+                $query->like('titel', '%' . $titel . '%'),
                 $query->in('kategory.uid', $categoryIds),
                 $query->greaterThanOrEqual('preis', $minPrice),
                 $query->lessThanOrEqual('preis', $maxPrice)

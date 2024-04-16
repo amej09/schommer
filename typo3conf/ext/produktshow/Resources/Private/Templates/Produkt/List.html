@@ -33,7 +33,9 @@ in /Configuration/ExtensionBuilder/settings.yaml:
                 <h2 class="donne-green">Kategorien</h2>
                 <f:for each="{kategories}" as="kategory">
                     <div class="checkbox-custom">
-                        <f:form.checkbox id="myCheckbox{kategory.uid}" onclick="submit()" name="kategory[]" value="{kategory.uid}"   />
+                        <f:form.checkbox id="myCheckbox{kategory.uid}" onclick="submit()" name="kategory[]" value="{kategory.uid}"
+                        checked="{f:if(condition: kategory.uid in selectedCategories, then: 'checked', else: '')}" 
+                        />
                         <label class="donne" for="myCheckbox{kategory.uid}">
                             <img src="/schommer/fileadmin/user_upload/button_inaktiv.svg" alt="Icône par défaut" class="icon" />
                             <span class="category-name">{kategory.namekategory}</span>
