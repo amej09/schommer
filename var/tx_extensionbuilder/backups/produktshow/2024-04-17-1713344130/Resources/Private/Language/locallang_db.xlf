@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:produktshow/Resources/Private/Language/locallang_db.xlf" date="2024-04-02T15:58:55Z" product-name="produktshow">
+		<header/>
+		<body>
+			<trans-unit id="tx_produktshow_domain_model_produkt" resname="tx_produktshow_domain_model_produkt">
+				<source>Produkt</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.titel" resname="tx_produktshow_domain_model_produkt.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.preis" resname="tx_produktshow_domain_model_produkt.preis">
+				<source>Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.lager" resname="tx_produktshow_domain_model_produkt.lager">
+				<source>Lager</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.lieferzeit" resname="tx_produktshow_domain_model_produkt.lieferzeit">
+				<source>Lieferzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.dateiname" resname="tx_produktshow_domain_model_produkt.dateiname">
+				<source>Dateiname</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_produkt.kategory" resname="tx_produktshow_domain_model_produkt.kategory">
+				<source>Kategory</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_kategory" resname="tx_produktshow_domain_model_kategory">
+				<source>Kategory</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_domain_model_kategory.namekategory" resname="tx_produktshow_domain_model_kategory.namekategory">
+				<source>Namekategory</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_prs.name" resname="tx_produktshow_prs.name">
+				<source>profukts show</source>
+			</trans-unit>
+			<trans-unit id="tx_produktshow_prs.description" resname="tx_produktshow_prs.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

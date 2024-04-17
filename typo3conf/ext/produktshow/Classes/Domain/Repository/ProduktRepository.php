@@ -20,16 +20,16 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ProduktRepository extends Repository
 {
- 
+
     /**
      * @param string $titel
      * @param string $priceRange
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
-    public function findByFilter(string $titel ,string $priceRange )
+    public function findByFilter(string $titel, string $priceRange)
     {
         $minPrice = 0;
-        $maxPrice = 10000000000;  
+        $maxPrice = 10000000000;
         if ($priceRange === '0-50') {
             $maxPrice = 50;
         } elseif ($priceRange === '50-100') {
@@ -49,20 +49,19 @@ class ProduktRepository extends Repository
                 $query->lessThanOrEqual('preis', $maxPrice)
             )
         );
-    
         return $query->execute();
     }
-    
-     /**
+
+    /**
      * @param string $titel
-     * @param string $priceRange
      * @param array $categoryIds
+     * @param string $priceRange
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
-    public function findByCategories(string $titel,array $categoryIds ,string $priceRange )
+    public function findByCategories(string $titel, array $categoryIds, string $priceRange)
     {
         $minPrice = 0;
-        $maxPrice = 10000000000;  
+        $maxPrice = 10000000000;
         if ($priceRange === '0-50') {
             $maxPrice = 50;
         } elseif ($priceRange === '50-100') {
@@ -76,20 +75,13 @@ class ProduktRepository extends Repository
         }
         $query = $this->createQuery();
         $query->matching(
-            $query->logicalAnd(
-                $query->like('titel', '%' . $titel . '%'),
-                $query->in('kategory.uid', $categoryIds),
-                $query->greaterThanOrEqual('preis', $minPrice),
-                $query->lessThanOrEqual('preis', $maxPrice)
-            )
+        $query->logicalAnd(
+        $query->like('titel', '%' . $titel . '%'),
+        $query->in('kategory.uid', $categoryIds),
+        $query->greaterThanOrEqual('preis', $minPrice),
+        $query->lessThanOrEqual('preis', $maxPrice)
+        )
         );
-    
         return $query->execute();
     }
-    
-    
-
-   
-
-   
 }
