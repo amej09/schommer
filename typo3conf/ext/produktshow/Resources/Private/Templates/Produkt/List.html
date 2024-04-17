@@ -17,10 +17,8 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 
  
 <f:section name="content" >
- 
     <div class="sidebar">
-       <!-- <f:render partial="FilterForm"   />-->
-       <form   
+        <form   
             id="form" 
             action="{f:uri.action(action: 'list' , controller: 'Produkt' )}"
             method="post">
@@ -64,12 +62,7 @@ in /Configuration/ExtensionBuilder/settings.yaml:
                     <a  onclick="price_filter(4)" >200 $ und mehr</a>
                 </div>
             </div>
-    
-
-        </form>
- 
-
-
+       </form>
     </div>
     <div class="right-section">
         <div class="product-cards">

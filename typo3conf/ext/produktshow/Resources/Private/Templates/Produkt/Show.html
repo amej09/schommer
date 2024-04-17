@@ -14,11 +14,28 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Single View for Produkt</h1>
+    <div class="zuruck donne">
+      <f:link.action action="list"><img class="rotate90" src="/schommer/fileadmin/user_upload/pfeil.png" />zurück</f:link.action>
+    </div>
+    <div >
+        <p class="titel-top titel">{produkt.titel}</p>
+    </div> 
 
-    <f:flashMessages />
-    <f:render partial="Produkt/Properties" arguments="{produkt:produkt}" />
-    <f:link.action action="list">Back to list</f:link.action><br />
-    <f:link.action action="new">New Produkt</f:link.action>
+    <div class="container-d product-detaille">
+        <div class="image zoom">
+            <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="{produkt.titel}">
+        </div> 
+        <div class="product-info">
+            <p class="titel-product titel">{produkt.titel}</p>
+            <h2 class="donne-green">Preis</h2>
+            <h1 class="product-donne">{produkt.preis} €</h1>
+            <h2 class="donne-green">Versand</h2>
+            <h1 class="product-donne">Lieferung bis {produkt.lieferzeit}</h1>
+            <h2 class="donne-green">Lagerbestand</h2>
+            <h1 class="product-donne">{produkt.lager}</h1>
+            <f:form.submit class="button-kaufen" value="Kaufen" additionalAttributes="{disabled: '{produkt.lager} == 0'}" />
+
+        </div>
+    </div>
 </f:section>
 </html>

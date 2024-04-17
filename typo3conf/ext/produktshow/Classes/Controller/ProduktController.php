@@ -87,4 +87,6 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('produkt', $produkt);
         return $this->htmlResponse();
     }
+
+  
 }

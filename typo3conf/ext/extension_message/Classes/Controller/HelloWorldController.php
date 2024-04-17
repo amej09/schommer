@@ -14,8 +14,7 @@ class HelloWorldController extends ActionController
     public function showAction(): ResponseInterface
     {
         $text = 'Hello  controller';
-        $object = new \stdClass();
-        $object->text = 'Hello World controller 2';
+        $object= 'Hello World controller 2';
         $this->view->assign('text', $text);
         $this->view->assign('text2', $object);
         return $this->htmlResponse();

@@ -1617,8 +1617,8 @@ defined('TYPO3') || die();
         ],
         // non-cacheable actions
         [
-            \Vendor\Produktshow\Controller\ProduktController::class => '',
-            \Vendor\Produktshow\Controller\KategoryController::class => ''
+            \Vendor\Produktshow\Controller\ProduktController::class => 'list, show',
+            \Vendor\Produktshow\Controller\KategoryController::class => 'list, show'
         ]
     );
 
