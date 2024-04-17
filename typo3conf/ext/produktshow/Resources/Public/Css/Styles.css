@@ -350,6 +350,32 @@ a{
     padding: 10px;
 }
 
+/*import*/
+.container {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    padding: 20px;
+    background-color: #fff;
+}
+.btn{
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #77aa78;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 @media screen and (max-width: 800px) {
     body {
         display: block;

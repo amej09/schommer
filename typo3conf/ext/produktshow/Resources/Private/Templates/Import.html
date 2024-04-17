@@ -1,15 +1,18 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+ 
+
 <f:layout name="Default" />
 
 
-<f:section name="content">
-    <div class="container">
-        <h1>CSV-Dateiimport</h1>
-        <form action="importfichier.php" method="post" enctype="multipart/form-data">
-            <label for="file">Wählen Sie eine CSV-Datei:</label>
-            <input type="file" name="file" id="file" accept=".csv">
-            <button type="submit">Importieren</button>
-        </form>
-    </div>
+<f:section name="content" >
+         <div class="container">
+            <h1>CSV-Dateiimport</h1>
+            <f:form  enctype="multipart/form-data" action="import" controller="Produkt" object="{produkt}" objectName="produkt">
+                <label for="file">Wählen Sie eine CSV-Datei:</label>
+                <input type="file" name="file" id="file" accept=".csv">
+                 <button type="submit" class="btn" >Importieren</button>
+
+            </f:form>
+        </div>
 </f:section>
 </html>

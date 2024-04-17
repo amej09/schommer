@@ -57,6 +57,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
+        $selectedCategories =[];
         $produkts = $this->produktRepository->findAll();
         $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? null;
         $selectedCategories = $this->request->getParsedBody()['kategory'] ?? [];
@@ -87,6 +88,18 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('produkt', $produkt);
         return $this->htmlResponse();
     }
+
+    /**
+      *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function importAction(): \Psr\Http\Message\ResponseInterface
+    { 
+        
+        // Renvoie la réponse HTML avec la page d'import
+        return $this->htmlResponse();
+    }
+
 
   
 }
