@@ -6,13 +6,20 @@
 
 <f:section name="content" >
          <div class="container">
-            <h1>CSV-Dateiimport</h1>
-            <f:form  enctype="multipart/form-data" action="import" controller="Produkt" object="{produkt}" objectName="produkt">
-                <label for="file">Wählen Sie eine CSV-Datei:</label>
-                <input type="file" name="file" id="file" accept=".csv">
-                 <button type="submit" class="btn" >Importieren</button>
-
-            </f:form>
+            <form action="{f:uri.action(action: 'import')}" method="post" enctype="multipart/form-data">
+                <label for="csvFile">Sélectionner un fichier CSV :</label>
+                <input type="file" id="csvFile" name="csvFile" accept=".csv">
+                <button type="submit">Importer</button>
+            </form>
+            <f:if condition="{errors}">
+                <div class="errors">
+                    <f:for each="{errors}" as="error">
+                        <p>{error}</p>
+                    </f:for>
+                </div>
+            </f:if>
         </div>
+   
+        
 </f:section>
 </html>

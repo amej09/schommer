@@ -89,16 +89,57 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         return $this->htmlResponse();
     }
 
+     
+
     /**
-      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * Fonction pour traiter le contenu du fichier CSV
+     *
+     * @param string $csvContent
+     * @return void
      */
-    public function importAction(): \Psr\Http\Message\ResponseInterface
-    { 
-        
-        // Renvoie la réponse HTML avec la page d'import
+    protected function processCsvContent(string $csvContent)
+    {
+         $lines = explode(PHP_EOL, $csvContent);
+         foreach ($lines as $line) {
+             $columns = str_getcsv($line, "\t"); 
+             $kategory = $this->kategoryRepository->findByUid($columns[4]);
+            if (!$kategory) {
+                 $kategory = new \Vendor\Produktshow\Domain\Model\Kategory();
+                $kategory->setNamekategory($columns[4]);
+                 $this->kategoryRepository->add($kategory);
+            }
+
+            $produkt = new \Vendor\Produktshow\Domain\Model\Produkt();
+            $produkt->setTitel($columns[0]);
+            $produkt->setPreis(floatval(str_replace(',', '.', $columns[1]))); 
+            $produkt->setLager(intval($columns[2]));
+            $produkt->setLieferzeit($columns[3]);
+            $produkt->setKategory($kategory);
+            $produkt->setPid(26);
+
+            $this->produktRepository->add($produkt);
+        }
+        $this->redirect('list');
+
+    }
+
+
+    public function importAction()
+    {
+         if (!empty($file['csvFile']['tmp_name'])) {
+             $uploadPath =  '/schommer/fileadmin/fileadmin/user_upload/' . basename($file['csvFile']['name']);
+             move_uploaded_file($file['csvFile']['tmp_name'], $uploadPath);
+
+             $csvContent = file_get_contents($uploadPath);
+             $this->processCsvContent($csvContent);
+
+             unlink($uploadPath);
+        }
+
         return $this->htmlResponse();
     }
+
+
 
 
   

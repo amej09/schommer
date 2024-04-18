@@ -84,4 +84,6 @@ class ProduktRepository extends Repository
         );
         return $query->execute();
     }
+
+    
 }
