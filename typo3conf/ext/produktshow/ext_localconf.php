@@ -7,12 +7,14 @@ defined('TYPO3') || die();
         'Prs',
         [
             \Vendor\Produktshow\Controller\ProduktController::class => 'list, show,import',
-            \Vendor\Produktshow\Controller\KategoryController::class => 'list, show ,import'
+            \Vendor\Produktshow\Controller\KategoryController::class => 'list, show ,import',
+            
         ],
         // non-cacheable actions
         [
             \Vendor\Produktshow\Controller\ProduktController::class => 'list, show ,import',
-            \Vendor\Produktshow\Controller\KategoryController::class => 'list, show ,import'
+            \Vendor\Produktshow\Controller\KategoryController::class => 'list, show ,import',
+            \Vendor\Produktshow\Utility\ProductImportUtility::class => 'import'
         ]
     );
 

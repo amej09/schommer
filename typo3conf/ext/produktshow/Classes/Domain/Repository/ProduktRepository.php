@@ -80,8 +80,7 @@ class ProduktRepository extends Repository
         $query->in('kategory.uid', $categoryIds),
         $query->greaterThanOrEqual('preis', $minPrice),
         $query->lessThanOrEqual('preis', $maxPrice)
-        )
-        );
+        ));
         return $query->execute();
     }
 
@@ -89,17 +88,17 @@ class ProduktRepository extends Repository
      * Trouve un produit par son titre.
      *
      * @param string $title Le titre du produit à rechercher.
-     * @return \Vendor\Produktshow\Domain\Model\Produkt|null Le produit trouvé ou null s'il n'existe pas.
+     * @return \Vendor\Produktshow\Domain\Model\Produkt
      */
-    public function findByTitle($title)
+    public function findByTitle(string $title)
     {
         
         $query = $this->createQuery();
         $query->matching(
-            $query->equals('titel', $title)
+            $query->like('titel', '%' . $title . '%')
         );
 
-        return $query->execute();
+        return $query->execute()->getFirst();
 
     }
     

@@ -6,6 +6,8 @@ use Vendor\Produktshow\Domain\Model\Kategory;
 use Vendor\Produktshow\Domain\Model\Produkt;
 use Vendor\Produktshow\Domain\Repository\ProduktRepository;
 use Vendor\Produktshow\Domain\Repository\KategoryRepository;
+use TYPO3\CMS\Core\Cache\CacheManager;
+
 
 class ProductImportUtility
 {
@@ -26,6 +28,12 @@ class ProductImportUtility
         $this->produktRepository = $produktRepository;
         $this->kategoryRepository = $kategoryRepository;
     }
+
+   /* public function clearCache()
+    {
+        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
+        $cacheManager->flushCachesInGroup('pages');
+    }*/
 
     public function import()
     {
@@ -57,7 +65,8 @@ class ProductImportUtility
 
                     // Recherche ou création de la catégorie
                     $category = $this->kategoryRepository->findByCategoryName($categoryName);
-                    echo "categoryName:$categoryName </br>";
+                    // echo "categoryName:$categoryName </br>";
+                    print_r($data);
                     echo "category:$category </br>";
 
                     if (!$category) {
@@ -68,10 +77,13 @@ class ProductImportUtility
 
                         $this->kategoryRepository->add($category);
                     }
+                   // $this->clearCache();
+
+                   // break;
 
                     // Recherche ou création du produit
                     $product = $this->produktRepository->findByTitle($title);
-                    echo "product:$product </br>";
+                   // echo "product:$product </br>";
                     if (!$product) {
                         // Le produit n'existe pas, créez-le
                         $product = new \Vendor\Produktshow\Domain\Model\Produkt();
@@ -80,13 +92,13 @@ class ProductImportUtility
                         $product->setLager($stock);
                         $product->setLieferzeit($deliveryTime);
                         $product->setDateiname($imagePath);
-                        echo "productmitset:$product </br>";
+                      //  echo "productmitset:$product </br>";
 
                     }
 
                     // Ajout de la catégorie au produit
-                    $product->addKategory($category);
-                    echo "productmitsetaddKategory:$product </br>";
+                    //$product->addKategory($category);
+                   // echo "productmitsetaddKategory:$product </br>";
 
                     //$this->produktRepository->add($product);
                 }

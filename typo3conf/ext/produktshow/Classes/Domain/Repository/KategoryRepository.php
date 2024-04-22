@@ -33,7 +33,7 @@ class KategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->equals('namekategory', $categoryName)
         );
 
-        return $query->execute();
+        return $query->execute()->getFirst();
 
     }
     
