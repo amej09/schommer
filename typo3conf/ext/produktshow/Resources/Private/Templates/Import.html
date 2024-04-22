@@ -4,22 +4,19 @@
 <f:layout name="Default" />
 
 
-<f:section name="content" >
-         <div class="container">
-            <form action="{f:uri.action(action: 'import')}" method="post" enctype="multipart/form-data">
-                <label for="csvFile">Sélectionner un fichier CSV :</label>
-                <input type="file" id="csvFile" name="csvFile" accept=".csv">
-                <button type="submit">Importer</button>
-            </form>
-            <f:if condition="{errors}">
-                <div class="errors">
-                    <f:for each="{errors}" as="error">
-                        <p>{error}</p>
-                    </f:for>
-                </div>
-            </f:if>
-        </div>
-   
-        
+<f:section name="content">
+    <!--<div class="container">
+        <form action="{f:uri.action(action: 'import')}" method="post" enctype="multipart/form-data">
+            <label for="csvFile">Sélectionner un fichier CSV :</label>
+            <input type="file" id="csvFile" name="csvFile" accept=".csv">
+            <button type="submit" class="btn">Importer</button>
+        </form>
+        <h1 style="background-color:red">le test:{uploadPath}</h1>
+    </div>-->
+    <!-- EXT:produktshow/Resources/Private/Templates/Produkt/import.html -->
+
+    <h1>Importer les produits depuis un fichier CSV</h1>
+    <f:link.action action="list"><img src="/schommer/fileadmin/user_upload/pfeil.png" />return</f:link.action>
+
 </f:section>
 </html>

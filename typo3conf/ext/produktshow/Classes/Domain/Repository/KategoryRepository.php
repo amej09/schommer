@@ -19,4 +19,22 @@ namespace Vendor\Produktshow\Domain\Repository;
  */
 class KategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+     /**
+     * Trouve une catégorie par son nom.
+     *
+     * @param string $categoryName Le nom de la catégorie à rechercher.
+     * @return \Vendor\Produktshow\Domain\Model\Kategory|null La catégorie trouvée ou null si elle n'existe pas.
+     */
+    public function findByCategoryName(string $categoryName)
+    { 
+
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('namekategory', $categoryName)
+        );
+
+        return $query->execute();
+
+    }
+    
 }

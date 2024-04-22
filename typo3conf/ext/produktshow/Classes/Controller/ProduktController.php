@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Vendor\Produktshow\Controller;
 
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Vendor\Produktshow\Domain\Model\Kategory;
+use Vendor\Produktshow\Domain\Model\Produkt;
+use Vendor\Produktshow\Utility\ProductImportUtility;
 
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
@@ -89,58 +94,27 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         return $this->htmlResponse();
     }
 
-     
+ 
+
+
 
     /**
-     * Fonction pour traiter le contenu du fichier CSV
+     * Action pour importer les produits depuis un fichier CSV
      *
-     * @param string $csvContent
-     * @return void
+     * @return ResponseInterface
      */
-    protected function processCsvContent(string $csvContent)
+    public function importAction(): ResponseInterface
     {
-         $lines = explode(PHP_EOL, $csvContent);
-         foreach ($lines as $line) {
-             $columns = str_getcsv($line, "\t"); 
-             $kategory = $this->kategoryRepository->findByUid($columns[4]);
-            if (!$kategory) {
-                 $kategory = new \Vendor\Produktshow\Domain\Model\Kategory();
-                $kategory->setNamekategory($columns[4]);
-                 $this->kategoryRepository->add($kategory);
-            }
+       
+        $importUtility = new ProductImportUtility($this->produktRepository, $this->kategoryRepository);
+        $importUtility->import();
 
-            $produkt = new \Vendor\Produktshow\Domain\Model\Produkt();
-            $produkt->setTitel($columns[0]);
-            $produkt->setPreis(floatval(str_replace(',', '.', $columns[1]))); 
-            $produkt->setLager(intval($columns[2]));
-            $produkt->setLieferzeit($columns[3]);
-            $produkt->setKategory($kategory);
-            $produkt->setPid(26);
-
-            $this->produktRepository->add($produkt);
-        }
-        $this->redirect('list');
-
-    }
-
-
-    public function importAction()
-    {
-         if (!empty($file['csvFile']['tmp_name'])) {
-             $uploadPath =  '/schommer/fileadmin/fileadmin/user_upload/' . basename($file['csvFile']['name']);
-             move_uploaded_file($file['csvFile']['tmp_name'], $uploadPath);
-
-             $csvContent = file_get_contents($uploadPath);
-             $this->processCsvContent($csvContent);
-
-             unlink($uploadPath);
-        }
-
+        $this->addFlashMessage('Les produits ont été importés avec succès.', 'Import réussi');
         return $this->htmlResponse();
+
     }
-
-
-
+    
+ 
 
   
 }

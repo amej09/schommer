@@ -85,5 +85,25 @@ class ProduktRepository extends Repository
         return $query->execute();
     }
 
+    /**
+     * Trouve un produit par son titre.
+     *
+     * @param string $title Le titre du produit à rechercher.
+     * @return \Vendor\Produktshow\Domain\Model\Produkt|null Le produit trouvé ou null s'il n'existe pas.
+     */
+    public function findByTitle($title)
+    {
+        
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('titel', $title)
+        );
+
+        return $query->execute();
+
+    }
+    
+   
+
     
 }
