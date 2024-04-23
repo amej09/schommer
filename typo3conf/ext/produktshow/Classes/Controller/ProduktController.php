@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Vendor\Produktshow\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Vendor\Produktshow\Domain\Model\Kategory;
-use Vendor\Produktshow\Domain\Model\Produkt;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+use TYPO3\CMS\Core\Pagination\PaginatorInterface;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
+use  TYPO3\CMS\Extbase\Persistence;
 use Vendor\Produktshow\Utility\ProductImportUtility;
-
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
  *
@@ -57,42 +57,50 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * Action list
-     *
+     *  
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
-        //$selectedCategories =[];
-        $produkts = $this->produktRepository->findAll();
+        $currentPageNumber = $this->request->getQueryParams()['page'] ?? 1;
+        $itemsPerPage = 6;
+    
         $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? null;
-        $selected = $this->request->getParsedBody()['kategory'] ?? [];
+        $selectedCategories = $this->request->getParsedBody()['kategory'] ?? [];
         
-        // New associative array
-        $selectedCategories = [];
-
-        // Loop through the original array and assign key-value pairs to the new array
-        foreach ($selected as $index => $value) {
-            // Use the value as both the key and the value for the associative array
-            $selectedCategories[$value] = $value;
-        }
-
-
         $priceRange = $this->request->getParsedBody()['priceRange'] ?? null;
         $priceRange = $priceRange ?? '0';
         $searchTerm = $searchTerm ?? '';
+    
         if (!empty($selectedCategories)) {
             $produkts = $this->produktRepository->findByCategories($searchTerm, $selectedCategories, $priceRange);
         } else {
             $produkts = $this->produktRepository->findByFilter($searchTerm, $priceRange);
-        }
-       
+        }   
+    
+        $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, $itemsPerPage);
+        $paginatedProducts = $paginator->getPaginatedItems();
+
+        $pagination = new SimplePagination($paginator);
+        $allPageNumbers = $pagination->getAllPageNumbers();
+        $previousPageNumber = $pagination->getPreviousPageNumber();
+        $nextPageNumber = $pagination->getNextPageNumber();
+    
+        $this->view->assign('produkts', $paginatedProducts);
+        $this->view->assign('allPageNumbers', $allPageNumbers);
+        $this->view->assign('previousPageNumber', $previousPageNumber);
+        $this->view->assign('nextPageNumber', $nextPageNumber);
+    
         $this->view->assign('selectedCategories', $selectedCategories);
         $this->view->assign('searchTerm', $searchTerm);
-        $this->view->assign('produkts', $produkts);
+        
         $kategories = $this->kategoryRepository->findAll();
         $this->view->assign('kategories', $kategories);
+        
         return $this->htmlResponse();
     }
+    
+
 
     /**
      * action show
