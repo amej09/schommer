@@ -62,10 +62,21 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        $selectedCategories =[];
+        //$selectedCategories =[];
         $produkts = $this->produktRepository->findAll();
         $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? null;
-        $selectedCategories = $this->request->getParsedBody()['kategory'] ?? [];
+        $selected = $this->request->getParsedBody()['kategory'] ?? [];
+        
+        // New associative array
+        $selectedCategories = [];
+
+        // Loop through the original array and assign key-value pairs to the new array
+        foreach ($selected as $index => $value) {
+            // Use the value as both the key and the value for the associative array
+            $selectedCategories[$value] = $value;
+        }
+
+
         $priceRange = $this->request->getParsedBody()['priceRange'] ?? null;
         $priceRange = $priceRange ?? '0';
         $searchTerm = $searchTerm ?? '';
@@ -74,6 +85,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         } else {
             $produkts = $this->produktRepository->findByFilter($searchTerm, $priceRange);
         }
+       
         $this->view->assign('selectedCategories', $selectedCategories);
         $this->view->assign('searchTerm', $searchTerm);
         $this->view->assign('produkts', $produkts);

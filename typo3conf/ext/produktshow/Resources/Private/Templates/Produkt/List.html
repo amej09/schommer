@@ -17,10 +17,9 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 
  
 <f:section name="content" >
-    <f:link.action action="import"><img src="/schommer/fileadmin/user_upload/pfeil.png" />import</f:link.action>
-<br>
     <div class="sidebar">
-      
+        <f:link.action action="import" class="donne-green"> import</f:link.action>
+
         <form   
             id="form" 
             action="{f:uri.action(action: 'list' , controller: 'Produkt' )}"
@@ -33,14 +32,12 @@ in /Configuration/ExtensionBuilder/settings.yaml:
                 <h2 class="donne-green">Kategorien</h2>
                 <f:for each="{kategories}" as="kategory">
                     <div class="checkbox-custom">
-                        <f:if condition="{kategory.uid} in {selectedCategories}">
-                            <f:then>
-                                <f:form.checkbox id="myCheckbox{kategory.uid}" onclick="submit()" name="kategory[]" value="{kategory.uid}" checked="checked" />
-                            </f:then>
-                            <f:else>
-                                <f:form.checkbox id="myCheckbox{kategory.uid}" onclick="submit()" name="kategory[]" value="{kategory.uid}" />
-                            </f:else>
+                        <f:if condition="{selectedCategories[kategory.uid] == kategory.uid}">
+                            <f:form.checkbox  id="myCheckbox{kategory.uid}" name="kategory[]"   value="{kategory.uid}"  checked="checked"   />
                         </f:if>
+                        <f:else>
+                            <f:form.checkbox  id="myCheckbox{kategory.uid}"  name="kategory[]" value="{kategory.uid}"  />
+                        </f:else>
                         <label class="donne" for="myCheckbox{kategory.uid}">
                             <img src="/schommer/fileadmin/user_upload/button_inaktiv.svg" alt="Icône par défaut" class="icon" />
                             <span class="category-name">{kategory.namekategory}</span>

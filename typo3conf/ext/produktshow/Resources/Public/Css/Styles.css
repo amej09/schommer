@@ -146,16 +146,16 @@ a{
  }
 
 .product-card {
-    flex: 1 1 500px;
-    max-width: 500px;
+    flex: 1 1 450px;
+    max-width:450px;
     box-sizing: border-box;
     position: relative;
 
 }
 
 .product-img {
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     border-left: 3px solid #E1E1E1;
 }
 
