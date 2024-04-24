@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Vendor\Produktshow\Controller;
 
+use PhpParser\Node\Expr\Assign;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\PaginatorInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use  TYPO3\CMS\Extbase\Persistence;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use Vendor\Produktshow\Utility\ProductImportUtility;
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
@@ -62,43 +65,73 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction(): ResponseInterface
     {
-        $currentPageNumber = $this->request->getQueryParams()['page'] ?? 1;
-        $itemsPerPage = 6;
-    
-        $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? null;
-        $selectedCategories = $this->request->getParsedBody()['kategory'] ?? [];
-        
-        $priceRange = $this->request->getParsedBody()['priceRange'] ?? null;
-        $priceRange = $priceRange ?? '0';
-        $searchTerm = $searchTerm ?? '';
-    
+
+        //argements
+        $currentPageNumber = $this->request->hasArgument('page')
+        ? (int)$this->request->getArgument('page') : 1;
+
+        if($this->request->hasArgument('searchTerm')){
+            $searchTerm=$this->request->getArgument('searchTerm');
+        }
+        if($this->request->hasArgument('kategory')){
+            $selectedCategories=$this->request->getArgument('kategory');
+        }
+        if($this->request->hasArgument('priceRange')){
+            $priceRange=$this->request->getArgument('priceRange');
+        }
+        //parsedbody  from Form
+        if($searchTerm){
+            $searchTerm = $this->request->getParsedBody()['searchTerm'] ??null;
+
+        }else{
+            $searchTerm = '';
+        }
+        if(empty($selectedCategories)){
+            $selectedCategories = $this->request->getParsedBody()['kategory'] ??null;
+        }
+        if($priceRange){
+            $priceRange = $this->request->getParsedBody()['priceRange'] ??null;
+
+        }else{
+            $priceRange = '0';
+
+        }
+        //DebuggerUtility::var_dump($this->request->getArguments());
+        //DebuggerUtility::var_dump( $this->request->getParsedBody()['kategory']);
+        //$produkts = $this->produktRepository->findAll();
+        //echo gettype($produkts);
+
         if (!empty($selectedCategories)) {
             $produkts = $this->produktRepository->findByCategories($searchTerm, $selectedCategories, $priceRange);
-        } else {
+        }else {
             $produkts = $this->produktRepository->findByFilter($searchTerm, $priceRange);
-        }   
-    
-        $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, $itemsPerPage);
-        $paginatedProducts = $paginator->getPaginatedItems();
+        }
 
+        $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, 3);
+        $produkts = $paginator->getPaginatedItems();
+        
         $pagination = new SimplePagination($paginator);
+
         $allPageNumbers = $pagination->getAllPageNumbers();
         $previousPageNumber = $pagination->getPreviousPageNumber();
         $nextPageNumber = $pagination->getNextPageNumber();
-    
-        $this->view->assign('produkts', $paginatedProducts);
-        $this->view->assign('allPageNumbers', $allPageNumbers);
-        $this->view->assign('previousPageNumber', $previousPageNumber);
-        $this->view->assign('nextPageNumber', $nextPageNumber);
-    
-        $this->view->assign('selectedCategories', $selectedCategories);
-        $this->view->assign('searchTerm', $searchTerm);
-        
-        $kategories = $this->kategoryRepository->findAll();
-        $this->view->assign('kategories', $kategories);
-        
-        return $this->htmlResponse();
+
+          $this->view->assignMultiple([
+            'produkts' => $produkts,
+            'allPageNumbers' => $allPageNumbers,
+            'previousPageNumber' => $previousPageNumber,
+            'nextPageNumber' => $nextPageNumber,
+            'currentPageNumber' => $currentPageNumber,
+            'selectedCategories' => $selectedCategories,
+            'searchTerm' => $searchTerm,
+            'priceRange' => $priceRange,
+            'kategories' =>  $this->kategoryRepository->findAll()
+        ]);
+
+       //return new HtmlResponse($this->view->render());
+       return $this->htmlResponse();
     }
+
     
 
 
