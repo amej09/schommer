@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Vendor\Produktshow\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use DateTime;
+use DateInterval;
+use DateTimeZone;
+use IntlDateFormatter;
 
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
@@ -101,8 +106,44 @@ class ProduktRepository extends Repository
         return $query->execute()->getFirst();
 
     }
-    
+    /**
+     * 
+     */
+    public function findSimilarProducts(\Vendor\Produktshow\Domain\Model\Produkt $produkt, $limit = 5)
+    {
+        $query = $this->createQuery();
+
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals('kategory', $produkt->getKategory()), 
+            )
+        );
+
+        $query->setLimit($limit);
+
+        return $query->execute();
+    }
    
+
+
+
+    /**
+     * 
+     *
+     */
+    public function calculateDeliveryDay(string $lieferzeit)
+    {
+   
+        $heute = new DateTime();
+
+        $heute->add(new DateInterval('P' . $lieferzeit . 'D'));
+
+        $formatter = new IntlDateFormatter('de_DE', IntlDateFormatter::FULL, IntlDateFormatter::NONE, 'Europe/Berlin', IntlDateFormatter::GREGORIAN, 'EEEE d MMMM');
+        return $formatter->format($heute->getTimestamp());
+    }
+
+   
+    
 
     
 }

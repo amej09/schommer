@@ -42,7 +42,6 @@ in /Configuration/ExtensionBuilder/settings.yaml:
                             <f:if condition="{selectedUid} == {kategory.uid}">
                                 <f:then>
                                     <f:variable name="test" value="1" />
- 
                                 </f:then>
                             </f:if>
                         </f:for>
@@ -77,49 +76,59 @@ in /Configuration/ExtensionBuilder/settings.yaml:
        </form>
     </div>
     <div class="right-section">
-        <div class="product-cards">
-          <f:for each="{produkts}" as="produkt">
-              <a href="{f:uri.action(action: 'show', arguments: {produkt: produkt})}">
-                  <div class="product-card">
-                      <div class="product-info">
-                          <h1 class="product-title">{produkt.titel}</h1>
-                          <h2 class="donne-green product-price">{produkt.preis} €</h2>
-                      </div>
+        <f:if condition="{produkts}">
+            <f:then>
 
-                      <f:if condition="{produkt.lager} == 0">
-                          <f:then>
-                              <div class="out-of-stock zoom">
-                                  <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
-                              </div>
-                              <h2 class="out-of-stock-text">ausverkauft</h2>
-                          </f:then>
-                          <f:else>
-                              <div class="product-img zoom">
-                                  <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
-                              </div>
-                          </f:else>
-                      </f:if>
-                  </div>
-              </a>
-          </f:for>
-         </div>
-        <!-- Pagination -->
-         <div class="pagination">
-         
-            <f:if condition="{previousPageNumber}">
-                <f:link.action action="list" 
-                arguments="{page: previousPageNumber,searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}" >&lt;</f:link.action>
-            </f:if>
-            <f:for each="{allPageNumbers}" as="pageNumber">
-                <f:link.action action="list" class="{f:if(condition:'{pageNumber}=={currentPageNumber}',then:'active')}" 
-                arguments="{page: pageNumber , searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}" 
-                 >{pageNumber}</f:link.action>
+            <div class="product-cards">
+            <f:for each="{produkts}" as="produkt">
+                <a href="{f:uri.action(action: 'show', arguments: {produkt: produkt})}">
+                    <div class="product-card">
+                        <div class="product-info">
+                            <h1 class="product-title">{produkt.titel}</h1>
+                            <h2 class="donne-green product-price">{produkt.preis} €</h2>
+                        </div>
+
+                        <f:if condition="{produkt.lager} == 0">
+                            <f:then>
+                                <div class="out-of-stock zoom">
+                                    <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
+                                </div>
+                                <h2 class="out-of-stock-text">ausverkauft</h2>
+                            </f:then>
+                            <f:else>
+                                <div class="product-img zoom">
+                                    <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="alt{produkt.titel}">
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </a>
             </f:for>
-            <f:if condition="{nextPageNumber}">
-                <f:link.action action="list" 
-                arguments="{page: nextPageNumber , searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}">&gt;</f:link.action>
-            </f:if>
-        </div>
+            </div>
+            <!-- Pagination -->
+
+            <div class="pagination">
+            
+                <f:if condition="{previousPageNumber}">
+                    <f:link.action action="list" 
+                    arguments="{page: previousPageNumber,searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}" >&lt;</f:link.action>
+                </f:if>
+                <f:for each="{allPageNumbers}" as="pageNumber">
+                    <f:link.action action="list" class="{f:if(condition:'{pageNumber}=={currentPageNumber}',then:'active')}" 
+                    arguments="{page: pageNumber , searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}" 
+                    >{pageNumber}</f:link.action>
+                </f:for>
+                <f:if condition="{nextPageNumber}">
+                    <f:link.action action="list" 
+                    arguments="{page: nextPageNumber , searchTerm: searchTerm, kategory: selectedCategories, priceRange: priceRange}">&gt;</f:link.action>
+                </f:if>
+            </div>
+            </f:then>
+            <f:else>
+                <div class="notfound" >Nicht gefundene Produkte</div>                    
+            </f:else>
+        </f:if>
+
 
     </div>  
 

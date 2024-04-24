@@ -109,7 +109,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $produkts = $this->produktRepository->findByFilter($searchTerm, $priceRange);
         }
 
-        $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, 3);
+        $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, 6);
         $produkts = $paginator->getPaginatedItems();
         
         $pagination = new SimplePagination($paginator);
@@ -145,7 +145,16 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function showAction(\Vendor\Produktshow\Domain\Model\Produkt $produkt): \Psr\Http\Message\ResponseInterface
     {
-        $this->view->assign('produkt', $produkt);
+        $similarProducts = $this->produktRepository->findSimilarProducts($produkt);
+         
+        $lieferzeit = $produkt->getLieferzeit();
+        $jourLivraison =  $this->produktRepository->calculateDeliveryDay($lieferzeit);
+
+        $this->view->assignMultiple([
+            'produkt' => $produkt,
+            'similarProducts' => $similarProducts,
+            'jourLivraison'=>$jourLivraison
+        ]);
         return $this->htmlResponse();
     }
 

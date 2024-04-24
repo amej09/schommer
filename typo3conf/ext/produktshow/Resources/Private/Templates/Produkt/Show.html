@@ -14,6 +14,8 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
+  <div class="c">
+
     <div class="zuruck donne">
       <f:link.action action="list"><img class="rotate90" src="/schommer/fileadmin/user_upload/pfeil.png" />zurück</f:link.action>
     </div>
@@ -30,12 +32,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <h2 class="donne-green">Preis</h2>
             <h1 class="product-donne">{produkt.preis} €</h1>
             <h2 class="donne-green">Versand</h2>
-            <h1 class="product-donne">Lieferung bis {produkt.lieferzeit}</h1>
+            <h1 class="product-donne">Lieferung bis {jourLivraison}</h1>
             <h2 class="donne-green">Lagerbestand</h2>
             <h1 class="product-donne">{produkt.lager}</h1>
             <f:form.submit class="button-kaufen" value="Kaufen" additionalAttributes="{disabled: '{produkt.lager} == 0'}" />
 
         </div>
     </div>
+      <p class="similar-products-title titel">Ähnliche Produkte</p>
+     <div class="similar-products">
+         <f:for each="{similarProducts}" as="similarProduct">
+          <a href="{f:uri.action(action: 'show', arguments: {produkt: similarProduct})}">
+
+             <div class="product-card-similar">
+                 <div class="product-info-similar">
+                     <h1 class="product-donne">{similarProduct.titel}</h1>
+                     <h2 class="donne-green product-price">{similarProduct.preis} €</h2>
+                 </div>
+                 <div class="product-img-similar zoom">
+                     <img src="/schommer/fileadmin/user_upload/{similarProduct.dateiname}" alt="{similarProduct.titel}">
+                 </div>
+             </div>
+           </a>  
+         </f:for>
+     </div>
+  </div>
+
 </f:section>
 </html>
