@@ -78,10 +78,13 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
         if($this->request->hasArgument('priceRange')){
             $priceRange=$this->request->getArgument('priceRange');
+        }else{
+            $priceRange = '0';
+
         }
         //parsedbody  from Form
-        if($searchTerm){
-            $searchTerm = $this->request->getParsedBody()['searchTerm'] ??null;
+        if(!$searchTerm){
+            $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? '';
 
         }else{
             $searchTerm = '';
@@ -89,12 +92,11 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(empty($selectedCategories)){
             $selectedCategories = $this->request->getParsedBody()['kategory'] ??null;
         }
-        if($priceRange){
-            $priceRange = $this->request->getParsedBody()['priceRange'] ??null;
+        if(!$priceRange){
+            $priceRange = $this->request->getParsedBody()['priceRange'] ?? '0';
 
         }else{
             $priceRange = '0';
-
         }
         //DebuggerUtility::var_dump($this->request->getArguments());
         //DebuggerUtility::var_dump( $this->request->getParsedBody()['kategory']);

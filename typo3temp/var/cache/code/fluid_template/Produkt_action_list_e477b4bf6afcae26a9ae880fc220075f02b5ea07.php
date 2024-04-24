@@ -1,6 +1,6 @@
 <?php
 
-class Produkt_action_list_0d26394bb28593893d7b66ae44dbe4f117b7f3a8 extends \TYPO3Fluid\Fluid\Core\Compiler\AbstractCompiledTemplate {
+class Produkt_action_list_e477b4bf6afcae26a9ae880fc220075f02b5ea07 extends \TYPO3Fluid\Fluid\Core\Compiler\AbstractCompiledTemplate {
 
 public function getLayoutName(\TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext) {
 $self = $this;
