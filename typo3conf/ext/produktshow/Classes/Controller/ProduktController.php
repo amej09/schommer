@@ -145,7 +145,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function showAction(\Vendor\Produktshow\Domain\Model\Produkt $produkt): \Psr\Http\Message\ResponseInterface
     {
-        $similarProducts = $this->produktRepository->findSimilarProducts($produkt);
+        $similarProducts = $this->produktRepository->findSimilarProducts($produkt,$this->kategoryRepository);
          
         $lieferzeit = $produkt->getLieferzeit();
         $jourLivraison =  $this->produktRepository->calculateDeliveryDay($lieferzeit);
