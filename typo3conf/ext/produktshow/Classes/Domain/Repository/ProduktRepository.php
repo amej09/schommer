@@ -109,20 +109,25 @@ class ProduktRepository extends Repository
     /**
      * 
      */
-    public function findSimilarProducts(\Vendor\Produktshow\Domain\Model\Produkt $produkt, $limit = 5)
+    public function findSimilarProducts(\Vendor\Produktshow\Domain\Model\Produkt $produkt)
     {
+        $limit = 5;
+        $kategories = $produkt->getKategory();
+        $uids = [];
+        foreach($kategories as $kategory) {
+            $uids[] = $kategory->getUid();
+        }
+
         $query = $this->createQuery();
-
         $query->matching(
-            $query->logicalAnd(
-                $query->equals('kategory', $produkt->getKategory()), 
-            )
-        );
-
+        $query->logicalAnd(
+        $query->in('kategory.uid', $uids),
+        ));
         $query->setLimit($limit);
 
         return $query->execute();
     }
+
    
 
 

@@ -28,15 +28,36 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="{produkt.titel}">
         </div> 
         <div class="product-info">
-            <p class="titel-product titel">{produkt.titel}</p>
+            <p class="titel-product titel">{produkt.titel} |{uid}| {type.uid}</p>
             <h2 class="donne-green">Preis</h2>
             <h1 class="product-donne">{produkt.preis} €</h1>
             <h2 class="donne-green">Versand</h2>
             <h1 class="product-donne">Lieferung bis {jourLivraison}</h1>
             <h2 class="donne-green">Lagerbestand</h2>
-            <h1 class="product-donne">{produkt.lager}</h1>
-            <f:form.submit class="button-kaufen" value="Kaufen" additionalAttributes="{disabled: '{produkt.lager} == 0'}" />
+              <f:if condition="{produkt.lager} == 7">
+                <h1 class="product-donne">Nur noch 7 Stück Auf Lager</h1>
+              </f:if>
+    
+                <f:if condition="{produkt.lager} < 7 && {produkt.lager} != 0">
+                  <h1 class="product-donne">weniger als 7 Stück Auf Lager</h1>
+              </f:if>
+            
+              <f:if condition="{produkt.lager} > 7">
+                  <h1 class="product-donne">Auf Lager</h1>
+              </f:if>
+              <f:if condition="{produkt.lager} == 0">
+                  <h1 class="product-donne-red">AKtuell nicht auf Lager !</h1>
+              </f:if>
+        
+              <f:if condition="{produkt.lager} == 0">
+                <f:then>
+                  <button class="button-kaufen-disabled donne" disabled>Kaufen</button>
 
+                </f:then>
+                <f:else>
+                  <button class="button-kaufen donne">Kaufen</button>
+                </f:else>  
+              </f:if>   
         </div>
     </div>
       <p class="similar-products-title titel">Ähnliche Produkte</p>

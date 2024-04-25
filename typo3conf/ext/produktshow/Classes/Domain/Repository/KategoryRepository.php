@@ -22,8 +22,8 @@ class KategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      /**
      * Trouve une catégorie par son nom.
      *
-     * @param string $categoryName Le nom de la catégorie à rechercher.
-     * @return \Vendor\Produktshow\Domain\Model\Kategory|null La catégorie trouvée ou null si elle n'existe pas.
+     * @param string $categoryName 
+     * @return \Vendor\Produktshow\Domain\Model\Kategory|null
      */
     public function findByCategoryName(string $categoryName)
     { 
@@ -36,5 +36,6 @@ class KategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute()->getFirst();
 
     }
+    
     
 }

@@ -12,6 +12,7 @@ use TYPO3\CMS\Core\Pagination\PaginatorInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use  TYPO3\CMS\Extbase\Persistence;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use Vendor\Produktshow\Domain\Model\Produkt;
 use Vendor\Produktshow\Utility\ProductImportUtility;
 /**
  * This file is part of the "Produkts show" Extension for TYPO3 CMS.
@@ -143,9 +144,10 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @param \Vendor\Produktshow\Domain\Model\Produkt $produkt
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function showAction(\Vendor\Produktshow\Domain\Model\Produkt $produkt): \Psr\Http\Message\ResponseInterface
+    public function showAction(Produkt $produkt):ResponseInterface
     {
-        $similarProducts = $this->produktRepository->findSimilarProducts($produkt,$this->kategoryRepository);
+        
+        $similarProducts = $this->produktRepository->findSimilarProducts($produkt);
          
         $lieferzeit = $produkt->getLieferzeit();
         $jourLivraison =  $this->produktRepository->calculateDeliveryDay($lieferzeit);
