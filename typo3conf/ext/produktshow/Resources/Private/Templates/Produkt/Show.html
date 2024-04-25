@@ -28,22 +28,22 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <img src="/schommer/fileadmin/user_upload/{produkt.dateiname}" alt="{produkt.titel}">
         </div> 
         <div class="product-info">
-            <p class="titel-product titel">{produkt.titel} |{uid}| {type.uid}</p>
-            <h2 class="donne-green">Preis</h2>
-            <h1 class="product-donne">{produkt.preis} €</h1>
+            <p class="titel-product ">{produkt.titel} </p>
+            <h2 class="donne-green paddinpreis">Preis</h2>
+            <h1  class="product-donne-detaille">{produkt.preis} €</h1>
             <h2 class="donne-green">Versand</h2>
-            <h1 class="product-donne">Lieferung bis {jourLivraison}</h1>
+            <h1  class="product-donne-detaille">Lieferung bis {jourLivraison}</h1>
             <h2 class="donne-green">Lagerbestand</h2>
               <f:if condition="{produkt.lager} == 7">
-                <h1 class="product-donne">Nur noch 7 Stück Auf Lager</h1>
+                <h1  class="product-donne-detaille">Nur noch 7 Stück Auf Lager</h1>
               </f:if>
     
                 <f:if condition="{produkt.lager} < 7 && {produkt.lager} != 0">
-                  <h1 class="product-donne">weniger als 7 Stück Auf Lager</h1>
+                  <h1  class="product-donne-detaille">weniger als 7 Stück Auf Lager</h1>
               </f:if>
             
               <f:if condition="{produkt.lager} > 7">
-                  <h1 class="product-donne">Auf Lager</h1>
+                  <h1  class="product-donne-detaille">Auf Lager</h1>
               </f:if>
               <f:if condition="{produkt.lager} == 0">
                   <h1 class="product-donne-red">AKtuell nicht auf Lager !</h1>
@@ -67,8 +67,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
              <div class="product-card-similar">
                  <div class="product-info-similar">
-                     <h1 class="product-donne">{similarProduct.titel}</h1>
-                     <h2 class="donne-green product-price">{similarProduct.preis} €</h2>
+                     <h1 class="product-donne-detaille">{similarProduct.titel}</h1>
+                     <h2 class="donne-green ">{similarProduct.preis} €</h2>
                  </div>
                  <div class="product-img-similar zoom">
                      <img src="/schommer/fileadmin/user_upload/{similarProduct.dateiname}" alt="{similarProduct.titel}">

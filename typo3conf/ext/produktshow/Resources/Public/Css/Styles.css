@@ -1,12 +1,13 @@
 @font-face {
     font-family: MontserratBold;
-    src: url('/fonts/Montserrat/Montserrat-Bold.ttf');
+    src: url('fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
 }
+
 @font-face {
     font-family: MontserratRegular;
-    src: url('/fonts/Montserrat/Montserrat-Regular.ttf');
+    src: url('fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
 }
-    
+
 .tx-produktshow {
     margin: 0;
     padding: 0;
@@ -282,10 +283,18 @@ a{
 /*detaille*/
 .titel-product{
     display:inline;
+    font-weight: 700;
+    font-size: 25px;
+    line-height :24px;
+    color: #505050;
+    font-family: 'MontserratBold';
+}
+.paddinpreis{
+    padding-top: 30px;
 }
 .titel-top{
     display:none;
-}
+ }
 .titel{
 
     margin-bottom: 35px;
@@ -377,6 +386,24 @@ a{
     width: 360px;
     height: 360px;
 }
+ .donne-detaille{
+    font-weight: 400;
+    font-size: 16px;
+    line-height :19px;
+    color: #505050;
+    font-family: 'MontserratRegular';
+
+}
+ 
+ .product-donne-detaille{
+    font-weight: 400;
+    font-size: 25px;
+    line-height :30px;
+    color: #505050;
+    font-family: 'MontserratRegular';
+
+    
+}
 .product-donne-red{
     font-weight: 400;
     font-size: 25px;
@@ -441,6 +468,7 @@ a{
         border-left: 0px solid #E1E1E1;
         width: auto;
         height: auto;
+        
     }
     
     .right-section {
@@ -461,6 +489,7 @@ a{
     .product-detaille img{
         max-width: 100%;
         height: auto;
+        padding: 10px;
     }    
     .product-info{
         width: 100%;
@@ -471,6 +500,7 @@ a{
     }
     .titel-product{
         display:none;
+        
     }
     .similar-products-title{
         padding-top:60px;
@@ -484,6 +514,7 @@ a{
        
         width: auto;
         height: auto;
+        
     }
     .detaille{
         margin: 0;
