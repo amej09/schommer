@@ -171,8 +171,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $importUtility = new ProductImportUtility($this->produktRepository, $this->kategoryRepository);
         $importUtility->import();
 
-        $this->addFlashMessage('Les produits ont été importés avec succès.', 'Import réussi');
-        return $this->htmlResponse();
+        return $this->redirect('list');
 
     }
     
