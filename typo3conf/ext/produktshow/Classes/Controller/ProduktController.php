@@ -87,8 +87,6 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(!$searchTerm){
             $searchTerm = $this->request->getParsedBody()['searchTerm'] ?? '';
 
-        }else{
-            $searchTerm = '';
         }
         if(empty($selectedCategories)){
             $selectedCategories = $this->request->getParsedBody()['kategory'] ??null;
@@ -96,8 +94,6 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(!$priceRange){
             $priceRange = $this->request->getParsedBody()['priceRange'] ?? '0';
 
-        }else{
-            $priceRange = '0';
         }
         //DebuggerUtility::var_dump($this->request->getArguments());
         //DebuggerUtility::var_dump( $this->request->getParsedBody()['kategory']);

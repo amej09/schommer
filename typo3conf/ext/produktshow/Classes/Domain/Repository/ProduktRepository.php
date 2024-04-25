@@ -63,7 +63,7 @@ class ProduktRepository extends Repository
      * @param string $priceRange
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
-    public function findByCategories(string $titel, array $categoryIds, string $priceRange)
+    public function findByCategories(string $titel = '', array $categoryIds = [], string $priceRange = '')
     {
         $minPrice = 0;
         $maxPrice = 10000000000;
@@ -78,16 +78,28 @@ class ProduktRepository extends Repository
         } elseif ($priceRange === '200') {
             $minPrice = 200;
         }
+
         $query = $this->createQuery();
+        $constraints = [];
+
+        if (!empty($titel)) {
+            $constraints[] = $query->like('titel', '%' . $titel . '%');
+        }
+
+        if (!empty($categoryIds)) {
+            $constraints[] = $query->in('kategory.uid', $categoryIds);
+        }
+
+        $constraints[] = $query->greaterThanOrEqual('preis', $minPrice);
+        $constraints[] = $query->lessThanOrEqual('preis', $maxPrice);
+
         $query->matching(
-        $query->logicalAnd(
-        $query->like('titel', '%' . $titel . '%'),
-        $query->in('kategory.uid', $categoryIds),
-        $query->greaterThanOrEqual('preis', $minPrice),
-        $query->lessThanOrEqual('preis', $maxPrice)
-        ));
+            $query->logicalAnd(...$constraints)
+        );
+
         return $query->execute();
     }
+
 
     /**
      * Trouve un produit par son titre.
