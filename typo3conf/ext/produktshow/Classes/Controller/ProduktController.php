@@ -108,6 +108,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $paginator = new ArrayPaginator($produkts->toArray(), $currentPageNumber, 6);
         $produkts = $paginator->getPaginatedItems();
+        $totalNumberOfPages = $paginator->getNumberOfPages();
         
         $pagination = new SimplePagination($paginator);
 
@@ -121,6 +122,7 @@ class ProduktController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'previousPageNumber' => $previousPageNumber,
             'nextPageNumber' => $nextPageNumber,
             'currentPageNumber' => $currentPageNumber,
+            'totalNumberOfPages' => $totalNumberOfPages,
             'selectedCategories' => $selectedCategories,
             'searchTerm' => $searchTerm,
             'priceRange' => $priceRange,

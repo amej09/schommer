@@ -120,7 +120,10 @@ input[type="checkbox"]:checked + label .icon {
     content: url("/schommer/fileadmin/user_upload/button_aktiv.svg"); /* link zum aktiven Symbol */
 }
 
-
+.priceRange {
+    color: #AFD96F;
+    
+}
 
 .Preis {
     margin-top: 35px;
